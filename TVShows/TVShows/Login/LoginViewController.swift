@@ -16,10 +16,14 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    var count : Int = 0
+    
     @IBOutlet weak var UILabel: UILabel!
     
     @IBAction func onButtonClick(_ sender: Any) {
         print("Click!!!")
+        count+=1
+        UILabel.text = String(count)
     }
     /*
     // MARK: - Navigation
