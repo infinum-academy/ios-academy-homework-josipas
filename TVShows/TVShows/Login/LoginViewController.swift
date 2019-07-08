@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Button.backgroundColor = UIColor.purple
+        Button.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
     
