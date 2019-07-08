@@ -18,14 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuC-7K-cZX">
-                                <rect key="frame" x="184" y="348" width="78" height="42"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuC-7K-cZX">
+                                <rect key="frame" x="-1221" y="-1048" width="2889" height="2835"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <size key="titleShadowOffset" width="-1" height="1"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" image="Button"/>
                                 <connections>
                                     <action selector="onButtonClick:" destination="ySY-SJ-s02" eventType="touchUpInside" id="Bml-Zs-3Nd"/>
                                 </connections>
@@ -51,4 +48,7 @@
             <point key="canvasLocation" x="127.53623188405798" y="79.891304347826093"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Button" width="100" height="100"/>
+    </resources>
 </document>
