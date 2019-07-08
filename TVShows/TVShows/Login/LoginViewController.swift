@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Button.backgroundColor = UIColor.purple
         // Do any additional setup after loading the view.
     }
     
@@ -20,10 +20,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var UILabel: UILabel!
     
+    @IBOutlet weak var Button: UIButton!
+    
     @IBAction func onButtonClick(_ sender: Any) {
-        print("Click!!!")
         count+=1
+        print("Click!")
         UILabel.text = String(count)
+        
     }
     /*
     // MARK: - Navigation

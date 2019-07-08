@@ -26,11 +26,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuC-7K-cZX">
-                                <rect key="frame" x="184" y="167" width="74" height="40"/>
+                                <rect key="frame" x="184" y="166" width="74" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <size key="titleShadowOffset" width="-1" height="1"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="onButtonClick:" destination="ySY-SJ-s02" eventType="touchUpInside" id="maD-2L-qeC"/>
+                                    <action selector="onButtonClick:" destination="ySY-SJ-s02" eventType="touchUpInside" id="Bml-Zs-3Nd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -38,6 +42,7 @@
                         <viewLayoutGuide key="safeArea" id="5IZ-ht-AMZ"/>
                     </view>
                     <connections>
+                        <outlet property="Button" destination="xuC-7K-cZX" id="W4T-iZ-tUZ"/>
                         <outlet property="UILabel" destination="Qdi-rw-b7N" id="2L1-Sc-1d5"/>
                     </connections>
                 </viewController>
