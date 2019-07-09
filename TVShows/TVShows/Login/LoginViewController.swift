@@ -20,15 +20,25 @@ class LoginViewController: UIViewController {
     
     var count : Int = 0
     
+    @IBOutlet weak var Activity: UIActivityIndicatorView!
+    
     @IBOutlet weak var UILabel: UILabel!
     
     @IBOutlet weak var Button: UIButton!
     
     @IBAction func onButtonClick(_ sender: Any) {
         count+=1
-        print("Click!")
+        //print("Click!")
         UILabel.text = String(count)
         
+        if Activity.isAnimating == true
+        {
+            Activity.stopAnimating()
+        }
+        else
+        {
+            Activity.startAnimating()
+        }
     }
     /*
     // MARK: - Navigation
