@@ -18,26 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xhu-z9-AZ8">
-                                <rect key="frame" x="30" y="40" width="354" height="596"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xhu-z9-AZ8">
+                                <rect key="frame" x="30" y="150" width="354" height="436"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="41I-Et-yUS">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="128"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="41I-Et-yUS">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="80"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fs6-Oj-eJQ">
-                                        <rect key="frame" x="0.0" y="128.00000000000003" width="354" height="327.66666666666674"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="fs6-Oj-eJQ">
+                                        <rect key="frame" x="0.0" y="110" width="354" height="35.666666666666657"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76L-vO-1dd">
-                                        <rect key="frame" x="0.0" y="455.66666666666669" width="354" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76L-vO-1dd">
+                                        <rect key="frame" x="0.0" y="175.66666666666669" width="354" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tuC-ya-f6M">
-                                        <rect key="frame" x="0.0" y="485.66666666666663" width="354" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tuC-ya-f6M">
+                                        <rect key="frame" x="0.0" y="235.66666666666669" width="354" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyX-S6-pc4">
                                                 <rect key="frame" x="0.0" y="0.0" width="312.33333333333331" height="30"/>
@@ -51,29 +51,32 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noE-sJ-sa6">
-                                        <rect key="frame" x="0.0" y="515.66666666666663" width="354" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noE-sJ-sa6">
+                                        <rect key="frame" x="0.0" y="295.66666666666669" width="354" height="30"/>
                                         <state key="normal" title="Button"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBc-aK-zbK">
-                                        <rect key="frame" x="0.0" y="545.66666666666663" width="354" height="20.333333333333371"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBc-aK-zbK">
+                                        <rect key="frame" x="0.0" y="355.66666666666669" width="354" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bV-ih-bzS">
-                                        <rect key="frame" x="0.0" y="566" width="354" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bV-ih-bzS">
+                                        <rect key="frame" x="0.0" y="406" width="354" height="30"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="fs6-Oj-eJQ" firstAttribute="top" secondItem="41I-Et-yUS" secondAttribute="bottom" constant="10" id="DqE-Iq-Q4i"/>
+                                    <constraint firstItem="41I-Et-yUS" firstAttribute="top" secondItem="xhu-z9-AZ8" secondAttribute="top" constant="50" id="q85-oV-tXK"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xhu-z9-AZ8" firstAttribute="leading" secondItem="5IZ-ht-AMZ" secondAttribute="leading" constant="30" id="ODA-Vf-WOP"/>
-                            <constraint firstItem="xhu-z9-AZ8" firstAttribute="top" secondItem="5IZ-ht-AMZ" secondAttribute="top" constant="20" id="Q0L-M3-4tS"/>
                             <constraint firstItem="xhu-z9-AZ8" firstAttribute="centerX" secondItem="Pwx-q6-xKf" secondAttribute="centerX" id="Ryc-EH-v06"/>
-                            <constraint firstItem="5IZ-ht-AMZ" firstAttribute="bottom" secondItem="xhu-z9-AZ8" secondAttribute="bottom" constant="100" id="XkR-ns-ueM"/>
+                            <constraint firstItem="5IZ-ht-AMZ" firstAttribute="bottom" secondItem="xhu-z9-AZ8" secondAttribute="bottom" constant="150" id="XkR-ns-ueM"/>
                             <constraint firstItem="xhu-z9-AZ8" firstAttribute="centerY" secondItem="Pwx-q6-xKf" secondAttribute="centerY" id="c0H-xw-MSr"/>
                             <constraint firstItem="5IZ-ht-AMZ" firstAttribute="trailing" secondItem="xhu-z9-AZ8" secondAttribute="trailing" constant="30" id="eL4-a9-dHy"/>
                         </constraints>
@@ -85,4 +88,7 @@
             <point key="canvasLocation" x="127.53623188405798" y="79.891304347826093"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="login-logo" width="75" height="80"/>
+    </resources>
 </document>
