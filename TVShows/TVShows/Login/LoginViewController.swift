@@ -24,6 +24,8 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        usernameTextField.placeholder = "Username"
+        passwordTextField.placeholder = "Password"
         
         // Do any additional setup after loading the view.
     }
