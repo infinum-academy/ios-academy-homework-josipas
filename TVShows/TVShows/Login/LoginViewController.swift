@@ -12,6 +12,8 @@ final class LoginViewController: UIViewController {
 
     //MARK: - Outlets
    
+    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     
     //MARK: - Properties
     
