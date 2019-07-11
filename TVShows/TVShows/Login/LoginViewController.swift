@@ -8,36 +8,39 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
+    //MARK: - Outlets
+    
+    @IBOutlet private weak var activityIndicator : UIActivityIndicatorView!
+    @IBOutlet private weak var counterLabel: UILabel!
+    @IBOutlet private weak var touchCounterButton: UIButton!
+    
+    //MARK: - Properties
+    
+    private var numberOfClicks : Int = 0
+    
+    //MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Button.backgroundColor = UIColor.purple
-        //Button.layer.cornerRadius = 10
+        //touchCounterButton.backgroundColor = UIColor.purple
+        //touchCounterButton.layer.cornerRadius = 10
         
         // Do any additional setup after loading the view.
     }
     
-    var count : Int = 0
+    //MARK: - Actions
     
-    @IBOutlet weak var Activity: UIActivityIndicatorView!
-    
-    @IBOutlet weak var UILabel: UILabel!
-    
-    @IBOutlet weak var Button: UIButton!
-    
-    @IBAction func onButtonClick(_ sender: Any) {
-        count+=1
+    @IBAction func onButtonClick() {
+        numberOfClicks += 1
         //print("Click!")
-        UILabel.text = String(count)
+        counterLabel.text = String(numberOfClicks)
         
-        if Activity.isAnimating == true
-        {
-            Activity.stopAnimating()
-        }
-        else
-        {
-            Activity.startAnimating()
+        if activityIndicator.isAnimating {
+            activityIndicator.stopAnimating()
+        } else {
+            activityIndicator.startAnimating()
         }
     }
     /*

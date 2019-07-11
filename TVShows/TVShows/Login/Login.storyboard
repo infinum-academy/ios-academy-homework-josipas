@@ -35,7 +35,7 @@
                                 <size key="titleShadowOffset" width="-1" height="1"/>
                                 <state key="normal" image="Button"/>
                                 <connections>
-                                    <action selector="onButtonClick:" destination="ySY-SJ-s02" eventType="touchUpInside" id="Bml-Zs-3Nd"/>
+                                    <action selector="onButtonClick" destination="ySY-SJ-s02" eventType="touchUpInside" id="bAl-HO-HoG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,9 +43,9 @@
                         <viewLayoutGuide key="safeArea" id="5IZ-ht-AMZ"/>
                     </view>
                     <connections>
-                        <outlet property="Activity" destination="6M3-9h-3fy" id="x3W-tt-gFw"/>
-                        <outlet property="Button" destination="xuC-7K-cZX" id="W4T-iZ-tUZ"/>
-                        <outlet property="UILabel" destination="Qdi-rw-b7N" id="2L1-Sc-1d5"/>
+                        <outlet property="activityIndicator" destination="6M3-9h-3fy" id="fpy-jD-bTq"/>
+                        <outlet property="counterLabel" destination="Qdi-rw-b7N" id="MOB-5i-PqL"/>
+                        <outlet property="touchCounterButton" destination="xuC-7K-cZX" id="5FS-py-fMO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqg-eW-aP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
