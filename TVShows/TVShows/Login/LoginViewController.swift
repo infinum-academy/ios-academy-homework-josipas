@@ -14,7 +14,7 @@ final class LoginViewController: UIViewController {
    
     @IBOutlet private weak var usernameTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-    
+    @IBOutlet private weak var rememberMeLabel: UILabel!
     //MARK: - Properties
     
    
@@ -27,6 +27,7 @@ final class LoginViewController: UIViewController {
         usernameTextField.placeholder = "Username"
         passwordTextField.placeholder = "Password"
         
+        rememberMeLabel.text = "Remember me"
         // Do any additional setup after loading the view.
     }
     
