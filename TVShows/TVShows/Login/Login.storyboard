@@ -54,17 +54,14 @@
                                         <rect key="frame" x="0.0" y="216" width="315" height="24"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyX-S6-pc4">
-                                                <rect key="frame" x="0.0" y="0.0" width="203.5" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="GvM-1h-7Gx"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="ic-checkbox-empty"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zd-fM-yOT">
-                                                <rect key="frame" x="203.5" y="0.0" width="111.5" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="111.67" id="UOE-wK-nbi"/>
-                                                </constraints>
+                                                <rect key="frame" x="30" y="0.0" width="285" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -76,7 +73,7 @@
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="LOG IN"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBc-aK-zbK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBc-aK-zbK">
                                         <rect key="frame" x="0.0" y="310" width="315" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -99,6 +96,7 @@
                         <viewLayoutGuide key="safeArea" id="5IZ-ht-AMZ"/>
                     </view>
                     <connections>
+                        <outlet property="logInButton" destination="noE-sJ-sa6" id="lGV-gh-NM0"/>
                         <outlet property="passwordTextField" destination="76L-vO-1dd" id="N04-Xf-7hO"/>
                         <outlet property="rememberMeLabel" destination="0zd-fM-yOT" id="Lrf-Jo-bYI"/>
                         <outlet property="usernameTextField" destination="fs6-Oj-eJQ" id="d5f-c4-hZx"/>
