@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ZEd-9y-QOJ">
-                                                <rect key="frame" x="25" y="30" width="325" height="358"/>
+                                                <rect key="frame" x="25" y="30" width="325" height="397"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4sz-Ts-Tyr">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="200"/>
@@ -61,7 +61,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="V3W-fq-TOl">
-                                                        <rect key="frame" x="0.0" y="320" width="325" height="38"/>
+                                                        <rect key="frame" x="0.0" y="320" width="325" height="77"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ttv-eb-qJt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="22"/>
@@ -76,6 +76,24 @@
                                                                     <constraint firstAttribute="height" constant="1" id="8ab-Zg-8TC"/>
                                                                 </constraints>
                                                             </view>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="-10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CcY-Nv-NDa">
+                                                                <rect key="frame" x="0.0" y="53" width="325" height="24"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfw-mJ-yhl">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="24"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="50" id="jPS-Vj-jbX"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Button" image="ic-checkbox-empty"/>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzE-ja-H32">
+                                                                        <rect key="frame" x="40" y="0.0" width="285" height="24"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
@@ -119,6 +137,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic-checkbox-empty" width="24" height="24"/>
         <image name="login-logo" width="75" height="80"/>
     </resources>
 </document>
