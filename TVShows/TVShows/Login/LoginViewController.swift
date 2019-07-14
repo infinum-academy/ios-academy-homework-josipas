@@ -12,7 +12,8 @@ final class LoginViewController: UIViewController {
 
     //MARK: - Outlets
    
-    
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     //MARK: - Properties
     
    
@@ -22,7 +23,8 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        usernameTextField.placeholder = "Username"
+        passwordTextField.placeholder = "Password"
         // Do any additional setup after loading the view.
     }
     
