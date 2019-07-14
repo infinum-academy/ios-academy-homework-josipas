@@ -31,6 +31,7 @@ final class LoginViewController: UIViewController {
         
         rememberMeLabel.text = "Remember me"
         
+        logInButton.backgroundColor = UIColor(red:1.00, green:0.46, blue:0.55, alpha:1.0)
         // Do any additional setup after loading the view.
     }
     
