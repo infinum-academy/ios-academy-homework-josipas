@@ -12,11 +12,6 @@ final class LoginViewController: UIViewController {
 
     //MARK: - Outlets
    
-    @IBOutlet private weak var usernameTextField: UITextField!
-    @IBOutlet private weak var passwordTextField: UITextField!
-    @IBOutlet private weak var rememberMeLabel: UILabel!
-    @IBOutlet private weak var logInButton: UIButton!
-    @IBOutlet private weak var createButton: UIButton!
     
     //MARK: - Properties
     
@@ -27,12 +22,6 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameTextField.placeholder = "Username"
-        passwordTextField.placeholder = "Password"
-        
-        rememberMeLabel.text = "Remember me"
-        
-        logInButton.layer.cornerRadius = 10
         
         // Do any additional setup after loading the view.
     }
