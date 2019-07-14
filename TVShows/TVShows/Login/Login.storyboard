@@ -6,12 +6,53 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="L08-P6-fZL">
             <objects>
-                <viewController id="ySY-SJ-s02" customClass="LoginViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController"/>
+                <viewController id="ySY-SJ-s02" customClass="LoginViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="47y-KH-bgv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2b-mw-dUj">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KwW-lT-Yeg">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PsQ-si-Zdf">
+                                        <rect key="frame" x="10" y="0.0" width="355" height="647"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="KwW-lT-Yeg" secondAttribute="trailing" id="CxR-dF-LBI"/>
+                                    <constraint firstAttribute="trailing" secondItem="PsQ-si-Zdf" secondAttribute="trailing" constant="10" id="HYO-Cl-YrQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="KwW-lT-Yeg" secondAttribute="bottom" id="OVA-Du-26p"/>
+                                    <constraint firstItem="KwW-lT-Yeg" firstAttribute="leading" secondItem="U2b-mw-dUj" secondAttribute="leading" id="X7y-pp-ucS"/>
+                                    <constraint firstItem="KwW-lT-Yeg" firstAttribute="centerX" secondItem="U2b-mw-dUj" secondAttribute="centerX" id="ZxF-Nm-M2y"/>
+                                    <constraint firstItem="PsQ-si-Zdf" firstAttribute="top" secondItem="U2b-mw-dUj" secondAttribute="top" id="asD-eS-gDF"/>
+                                    <constraint firstItem="KwW-lT-Yeg" firstAttribute="centerY" secondItem="U2b-mw-dUj" secondAttribute="centerY" id="cOg-5h-OtU"/>
+                                    <constraint firstItem="PsQ-si-Zdf" firstAttribute="leading" secondItem="U2b-mw-dUj" secondAttribute="leading" constant="10" id="dCe-2R-3zM"/>
+                                    <constraint firstItem="KwW-lT-Yeg" firstAttribute="top" secondItem="U2b-mw-dUj" secondAttribute="top" id="p5e-Pe-3Kz"/>
+                                    <constraint firstAttribute="bottom" secondItem="PsQ-si-Zdf" secondAttribute="bottom" id="v5m-MW-cz5"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KeX-Ee-agn" firstAttribute="bottom" secondItem="U2b-mw-dUj" secondAttribute="bottom" id="Sq1-0g-PEN"/>
+                            <constraint firstItem="KeX-Ee-agn" firstAttribute="trailing" secondItem="U2b-mw-dUj" secondAttribute="trailing" id="aT6-Ib-RNZ"/>
+                            <constraint firstItem="U2b-mw-dUj" firstAttribute="top" secondItem="KeX-Ee-agn" secondAttribute="top" id="bNH-ea-Rdp"/>
+                            <constraint firstItem="U2b-mw-dUj" firstAttribute="leading" secondItem="KeX-Ee-agn" secondAttribute="leading" id="pdo-uy-YQu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KeX-Ee-agn"/>
+                    </view>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqg-eW-aP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-82.400000000000006" y="-119.1904047976012"/>
