@@ -14,6 +14,7 @@ final class LoginViewController: UIViewController {
    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     //MARK: - Properties
     
    
@@ -25,6 +26,8 @@ final class LoginViewController: UIViewController {
         
         usernameTextField.placeholder = "Username"
         passwordTextField.placeholder = "Password"
+        
+        loginButton.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
     

@@ -24,8 +24,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KwW-lT-Yeg">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ZEd-9y-QOJ">
-                                                <rect key="frame" x="25" y="30" width="325" height="397"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ZEd-9y-QOJ">
+                                                <rect key="frame" x="25" y="34" width="325" height="545"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4sz-Ts-Tyr">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="200"/>
@@ -96,6 +96,33 @@
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="r93-oL-8tN">
+                                                        <rect key="frame" x="0.0" y="437" width="325" height="108"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RW-dl-jnC">
+                                                                <rect key="frame" x="0.0" y="0.0" width="325" height="50"/>
+                                                                <color key="backgroundColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="0Rl-A4-POd"/>
+                                                                </constraints>
+                                                                <state key="normal" title="LOG IN">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Or-d1-2hT">
+                                                                <rect key="frame" x="0.0" y="55" width="325" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3S-MV-diH">
+                                                                <rect key="frame" x="0.0" y="78" width="325" height="30"/>
+                                                                <state key="normal" title="Create an account">
+                                                                    <color key="titleColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -127,6 +154,7 @@
                         <viewLayoutGuide key="safeArea" id="KeX-Ee-agn"/>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="2RW-dl-jnC" id="3pG-3j-Fyj"/>
                         <outlet property="passwordTextField" destination="Ttv-eb-qJt" id="Dyk-n2-lyp"/>
                         <outlet property="usernameTextField" destination="ZLs-HM-2nv" id="24S-5T-bjr"/>
                     </connections>
