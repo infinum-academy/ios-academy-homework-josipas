@@ -33,7 +33,14 @@ final class LoginViewController: UIViewController {
     
     //MARK: - Actions
     
-   
+    @IBAction func checkboxTouched(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+        } else {
+            sender.isSelected = true
+        }
+    }
+    
     }
     /*
     // MARK: - Navigation

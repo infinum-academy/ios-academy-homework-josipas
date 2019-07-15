@@ -85,6 +85,10 @@
                                                                             <constraint firstAttribute="width" constant="50" id="jPS-Vj-jbX"/>
                                                                         </constraints>
                                                                         <state key="normal" title="Button" image="ic-checkbox-empty"/>
+                                                                        <state key="selected" image="ic-checkbox-filled"/>
+                                                                        <connections>
+                                                                            <action selector="checkboxTouched:" destination="ySY-SJ-s02" eventType="touchUpInside" id="4dy-FI-13I"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzE-ja-H32">
                                                                         <rect key="frame" x="40" y="0.0" width="285" height="24"/>
@@ -168,6 +172,7 @@
     </scenes>
     <resources>
         <image name="ic-checkbox-empty" width="24" height="24"/>
+        <image name="ic-checkbox-filled" width="24" height="24"/>
         <image name="login-logo" width="75" height="80"/>
     </resources>
 </document>
