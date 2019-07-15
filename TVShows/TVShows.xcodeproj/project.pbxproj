@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -49,6 +49,17 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		42A16D7122DC6A4E00EBE739 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42BFB61222CE53B600D06871 /* AppDelegate.swift */,
+				42BFB61922CE53B700D06871 /* Assets.xcassets */,
+				42BFB61B22CE53B700D06871 /* LaunchScreen.storyboard */,
+				42BFB61E22CE53B700D06871 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		42BFB60622CE53B600D06871 = {
 			isa = PBXGroup;
 			children = (
@@ -70,11 +81,8 @@
 		42BFB61122CE53B600D06871 /* TVShows */ = {
 			isa = PBXGroup;
 			children = (
+				42A16D7122DC6A4E00EBE739 /* Resources */,
 				425ADB1222D2897E0057AEC7 /* Login */,
-				42BFB61222CE53B600D06871 /* AppDelegate.swift */,
-				42BFB61922CE53B700D06871 /* Assets.xcassets */,
-				42BFB61B22CE53B700D06871 /* LaunchScreen.storyboard */,
-				42BFB61E22CE53B700D06871 /* Info.plist */,
 			);
 			path = TVShows;
 			sourceTree = "<group>";
@@ -93,7 +101,6 @@
 				6B418729453E24C530A04E14 /* Pods-TVShows.debug.xcconfig */,
 				8083B2D7FAD95CD1F84F3669 /* Pods-TVShows.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -353,7 +360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TVShows/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TVShows/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -371,7 +378,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TVShows/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TVShows/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
