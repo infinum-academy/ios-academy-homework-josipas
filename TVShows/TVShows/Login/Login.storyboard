@@ -113,7 +113,7 @@
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="navigateToHome" destination="ySY-SJ-s02" eventType="touchUpInside" id="GSg-Tb-eaP"/>
+                                                                    <action selector="navigateToHomeLoginButton" destination="ySY-SJ-s02" eventType="touchUpInside" id="vwI-Rr-F1j"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Or-d1-2hT">
@@ -127,6 +127,9 @@
                                                                 <state key="normal" title="Create an account">
                                                                     <color key="titleColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="navigateToHomeCreateButton" destination="ySY-SJ-s02" eventType="touchUpInside" id="gZa-Wx-0du"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -171,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqg-eW-aP2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="914.0625" y="-120"/>
+            <point key="canvasLocation" x="653" y="-120"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Q7H-Fn-PU9">

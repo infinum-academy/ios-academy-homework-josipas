@@ -17,8 +17,6 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     //MARK: - Properties
     
-   
-    
     //MARK: - Lifecycle methods
     
     override func viewDidLoad() {
@@ -40,17 +38,21 @@ final class LoginViewController: UIViewController {
             sender.isSelected = true
         }
     }
-    
-    // MARK: - Navigation
 
-    @IBAction func navigateToHome() {
-        let loginStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        
-        let HomeViewController = loginStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+    @IBAction func navigateToHomeLoginButton() {
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
     
         navigationController?.pushViewController(HomeViewController, animated: true)
-        
     }
+    
+    @IBAction func navigateToHomeCreateButton() {
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+        
+        navigationController?.pushViewController(HomeViewController, animated: true)
+    }
+    
     //In a storyboard-based application, you will often want to do a little preparation before navigation
     //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
