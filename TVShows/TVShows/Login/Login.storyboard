@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ySY-SJ-s02">
-    <device id="retina4_7" orientation="landscape">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController id="ySY-SJ-s02" customClass="LoginViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="47y-KH-bgv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="650"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2b-mw-dUj">
-                                <rect key="frame" x="0.0" y="20" width="375" height="980"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="630"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KwW-lT-Yeg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="981"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="643"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZEd-9y-QOJ">
                                                 <rect key="frame" x="25" y="30" width="325" height="513"/>
@@ -134,7 +134,7 @@
                                         <constraints>
                                             <constraint firstItem="ZEd-9y-QOJ" firstAttribute="leading" secondItem="KwW-lT-Yeg" secondAttribute="leading" constant="25" id="BLt-4N-YiQ"/>
                                             <constraint firstItem="ZEd-9y-QOJ" firstAttribute="top" secondItem="KwW-lT-Yeg" secondAttribute="top" constant="30" id="TuD-DI-Evy"/>
-                                            <constraint firstAttribute="bottom" secondItem="ZEd-9y-QOJ" secondAttribute="bottom" constant="438" id="dq6-bC-EDh"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZEd-9y-QOJ" secondAttribute="bottom" constant="100" id="dq6-bC-EDh"/>
                                             <constraint firstAttribute="trailing" secondItem="ZEd-9y-QOJ" secondAttribute="trailing" constant="25" id="fuI-oA-5LG"/>
                                         </constraints>
                                     </view>
@@ -158,7 +158,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KeX-Ee-agn"/>
                     </view>
-                    <size key="freeformSize" width="375" height="1000"/>
+                    <size key="freeformSize" width="375" height="650"/>
                     <connections>
                         <outlet property="loginButton" destination="2RW-dl-jnC" id="3pG-3j-Fyj"/>
                         <outlet property="passwordTextField" destination="Ttv-eb-qJt" id="Dyk-n2-lyp"/>
