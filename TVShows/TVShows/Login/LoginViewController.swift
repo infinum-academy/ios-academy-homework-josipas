@@ -53,13 +53,20 @@ final class LoginViewController: UIViewController {
         navigationController?.pushViewController(HomeViewController, animated: true)
     }
     
-    //In a storyboard-based application, you will often want to do a little preparation before navigation
-    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    //}
+
+   // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+      //  if let mojViewController = segue.destination as? HomeViewController {
+        //    mojViewController.user = User(name: "Josipa")
+     //   }
+//
+//        if segue.destination is HomeViewController {
+//            let mojVi3weController = segue.destination as HomeViewController
+//        }
+        
+    }
     
     
  
-}
+
 
