@@ -94,8 +94,8 @@
 		42BFB61122CE53B600D06871 /* TVShows */ = {
 			isa = PBXGroup;
 			children = (
-				42A16D7322DC6B4C00EBE739 /* Home */,
 				42A16D7122DC6A4E00EBE739 /* Resources */,
+				42A16D7322DC6B4C00EBE739 /* Home */,
 				425ADB1222D2897E0057AEC7 /* Login */,
 			);
 			path = TVShows;
