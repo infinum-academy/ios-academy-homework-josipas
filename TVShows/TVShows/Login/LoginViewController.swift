@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
+import CodableAlamofire
 
 final class LoginViewController: UIViewController {
-
+    
+   
     //MARK: - Outlets
    
     @IBOutlet weak var usernameTextField: UITextField!
@@ -17,6 +21,8 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     //MARK: - Properties
+    
+    private var privateUser: User = User(email: "",type: "",id: "")
     
     //MARK: - Lifecycle methods
     
@@ -27,17 +33,15 @@ final class LoginViewController: UIViewController {
         passwordTextField.placeholder = "Password"
         
         loginButton.layer.cornerRadius = 10
-        // Do any additional setup after loading the view.
         
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        
     }
     
     
     //MARK: - Actions
     
-    @IBAction func checkboxTouched(_ sender: UIButton) {
+    @IBAction private func checkboxTouched(_ sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false
         } else {
@@ -45,21 +49,21 @@ final class LoginViewController: UIViewController {
         }
     }
 
-    @IBAction func navigateToHomeLoginButton() {
+    @IBAction private func navigateToHomeLoginButton() {
         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
     
         navigationController?.pushViewController(HomeViewController, animated: true)
     }
     
-    @IBAction func navigateToHomeCreateButton() {
-        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-        
-        navigationController?.pushViewController(HomeViewController, animated: true)
+    @IBAction private func navigateToHomeCreateButton() {
+      if !(usernameTextField.text!.isEmpty) && !(passwordTextField.text!.isEmpty) {
+            _registerUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
+        }
     }
     
-    @objc func adjustForKeyboard(notification: Notification) {
+    
+   @objc private func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
@@ -71,5 +75,40 @@ final class LoginViewController: UIViewController {
             scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
         }
     }
+    
+    private func _registerUserWith(email: String, password: String) {
+        SVProgressHUD.show()
+        
+        let parameters: [String: String] = [
+            "email": email,
+            "password": password
+        ]
+        
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/users",
+                method: .post,
+                parameters: parameters,
+                encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { (response: DataResponse<User>) in
+                
+                SVProgressHUD.dismiss()
+                switch response.result {
+                case .success(let user):
+                    print("Success: \(user)")
+                    self.privateUser = User(email: user.email, type: user.type, id: user.id)
+                    DispatchQueue.main.async {
+                        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+                        self.navigationController?.pushViewController(HomeViewController, animated: true)
+                    }
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
+            }
+        }
+
 
 }
+
