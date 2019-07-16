@@ -47,7 +47,7 @@
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLs-HM-2nv">
                                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="22"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -65,9 +65,9 @@
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ttv-eb-qJt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="22"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8NV-PW-Kym">
                                                                 <rect key="frame" x="0.0" y="37" width="325" height="1"/>
