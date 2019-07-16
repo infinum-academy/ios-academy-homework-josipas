@@ -1,16 +1,25 @@
 PODS:
-  - MBProgressHUD (1.1.0)
+  - Alamofire (4.8.2)
+  - CodableAlamofire (1.1.1):
+    - Alamofire (~> 4.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
-  - MBProgressHUD
+  - Alamofire
+  - CodableAlamofire
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - MBProgressHUD
+    - Alamofire
+    - CodableAlamofire
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
-  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CodableAlamofire: b587c1198562824abb1f468aed34feb00d6cecd8
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 2e8abd88ad1c2d2654d59bc32938ba076c9dada2
+PODFILE CHECKSUM: 3363b7d19c5a224a8e70aa40082bbe92f854d774
 
 COCOAPODS: 1.7.3
