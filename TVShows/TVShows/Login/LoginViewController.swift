@@ -22,7 +22,8 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     //MARK: - Properties
     
-    private var privateUser: User = User(email: "",type: "",id: "")
+    private var registerUser: User = User(email: "",type: "",id: "")
+     private var loginUser: LoginData = LoginData(token: "")
     
     //MARK: - Lifecycle methods
     
@@ -50,14 +51,11 @@ final class LoginViewController: UIViewController {
     }
 
     @IBAction private func navigateToHomeLoginButton() {
-        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-    
-        navigationController?.pushViewController(HomeViewController, animated: true)
+        _loginUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
     }
     
     @IBAction private func navigateToHomeCreateButton() {
-      if !(usernameTextField.text!.isEmpty) && !(passwordTextField.text!.isEmpty) {
+        if !(usernameTextField.text!.isEmpty) && !(passwordTextField.text!.isEmpty) {
             _registerUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
         }
     }
@@ -97,7 +95,40 @@ final class LoginViewController: UIViewController {
                 switch response.result {
                 case .success(let user):
                     print("Success: \(user)")
-                    self.privateUser = User(email: user.email, type: user.type, id: user.id)
+                    self.registerUser = User(email: user.email, type: user.type, id: user.id)
+                    /*DispatchQueue.main.async {
+                        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+                        self.navigationController?.pushViewController(HomeViewController, animated: true)
+                    }*/
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
+            }
+        }
+    
+    private func _loginUserWith(email: String, password: String) {
+        SVProgressHUD.show()
+        
+        let parameters: [String: String] = [
+            "email": email,
+            "password": password
+        ]
+        
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/users/sessions",
+                method: .post,
+                parameters: parameters,
+                encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { (response: DataResponse<LoginData>) in
+                
+                SVProgressHUD.dismiss()
+                switch response.result {
+                case .success(let login):
+                    print("Success: \(login)")
+                    self.loginUser = LoginData(token: login.token)
                     DispatchQueue.main.async {
                         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
                         let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
@@ -106,9 +137,7 @@ final class LoginViewController: UIViewController {
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
-            }
         }
-
-
+    }
+   
 }
-
