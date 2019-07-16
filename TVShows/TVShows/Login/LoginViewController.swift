@@ -41,7 +41,6 @@ final class LoginViewController: UIViewController {
     
     
     //MARK: - Actions
-    
     @IBAction private func checkboxTouched(_ sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false
