@@ -22,16 +22,13 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     //MARK: - Properties
     
-    private var registerUser: User = User(email: "",type: "",id: "")
-     private var loginUser: LoginData = LoginData(token: "")
+    private var registerUser: User?
+    private var loginUser: LoginData?
     
     //MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        usernameTextField.placeholder = "Username"
-        passwordTextField.placeholder = "Password"
         
         loginButton.layer.cornerRadius = 10
         
