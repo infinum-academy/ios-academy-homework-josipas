@@ -39,18 +39,15 @@ final class LoginViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction private func checkboxTouched(_ sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-        } else {
-            sender.isSelected = true
-        }
+       sender.isSelected.toggle()
     }
 
-    @IBAction private func navigateToHomeLoginButton() {
-        _loginUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
+    @IBAction private func loginButtonPressed() {
+        guard let username = usernameTextField.text, let password = passwordTextField.text else { return }
+        _loginUserWith(email: username, password: password)
     }
     
-    @IBAction private func navigateToHomeCreateButton() {
+    @IBAction private func createButtonPressed() {
         if !(usernameTextField.text!.isEmpty) && !(passwordTextField.text!.isEmpty) {
             _registerUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
         }
@@ -85,18 +82,14 @@ final class LoginViewController: UIViewController {
                 parameters: parameters,
                 encoding: JSONEncoding.default)
             .validate()
-            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { (response: DataResponse<User>) in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<User>) in
                 
                 SVProgressHUD.dismiss()
                 switch response.result {
                 case .success(let user):
                     print("Success: \(user)")
-                    self.registerUser = User(email: user.email, type: user.type, id: user.id)
-                    /*DispatchQueue.main.async {
-                        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-                        self.navigationController?.pushViewController(HomeViewController, animated: true)
-                    }*/
+                    self?.registerUser = User(email: user.email, type: user.type, id: user.id)
+                    self?.navigateToHome()
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
@@ -118,22 +111,24 @@ final class LoginViewController: UIViewController {
                 parameters: parameters,
                 encoding: JSONEncoding.default)
             .validate()
-            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { (response: DataResponse<LoginData>) in
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<LoginData>) in
                 
                 SVProgressHUD.dismiss()
                 switch response.result {
                 case .success(let login):
                     print("Success: \(login)")
-                    self.loginUser = LoginData(token: login.token)
-                    DispatchQueue.main.async {
-                        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-                        self.navigationController?.pushViewController(HomeViewController, animated: true)
-                    }
+                    self?.loginUser = LoginData(token: login.token)
+                    self?.navigateToHome()
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
         }
     }
-   
+    
+    private func navigateToHome() {
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+        self.navigationController?.pushViewController(HomeViewController, animated: true)
+    }
+
 }

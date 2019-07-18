@@ -113,7 +113,7 @@
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="navigateToHomeLoginButton" destination="ySY-SJ-s02" eventType="touchUpInside" id="vwI-Rr-F1j"/>
+                                                                    <action selector="loginButtonPressed" destination="ySY-SJ-s02" eventType="touchUpInside" id="uRe-pc-6Ha"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Or-d1-2hT">
@@ -128,7 +128,7 @@
                                                                     <color key="titleColor" red="1" green="0.45882352941176469" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="navigateToHomeCreateButton" destination="ySY-SJ-s02" eventType="touchUpInside" id="gZa-Wx-0du"/>
+                                                                    <action selector="createButtonPressed" destination="ySY-SJ-s02" eventType="touchUpInside" id="Df8-SE-8qd"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -182,7 +182,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="db1-p1-i9V" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lBD-Yu-EWK">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
