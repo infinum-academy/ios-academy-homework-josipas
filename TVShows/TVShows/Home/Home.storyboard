@@ -10,20 +10,57 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Shows-->
         <scene sceneID="nQ4-sQ-SQe">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tBb-cr-5Er" customClass="HomeViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" title="Shows" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tBb-cr-5Er" customClass="HomeViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N6Z-1a-a8q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.97704152460000004" green="0.93477252280000001" blue="0.17782215909999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o0W-Zf-3Yg">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TvShowsTableViewCell" id="wAh-88-nnn" customClass="TvShowsTableViewCell" customModule="TVShows" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wAh-88-nnn" id="nfp-9j-Zqd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TitleTvShow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuX-52-kZT">
+                                                    <rect key="frame" x="140" y="11" width="132" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="title" destination="uuX-52-kZT" id="Fht-QD-3NN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="o0W-Zf-3Yg" firstAttribute="trailing" secondItem="28j-ge-2fg" secondAttribute="trailing" id="7Tg-fi-6rj"/>
+                            <constraint firstItem="o0W-Zf-3Yg" firstAttribute="top" secondItem="28j-ge-2fg" secondAttribute="top" id="WBt-n0-MNn"/>
+                            <constraint firstItem="o0W-Zf-3Yg" firstAttribute="leading" secondItem="28j-ge-2fg" secondAttribute="leading" id="gGC-zQ-7vI"/>
+                            <constraint firstItem="o0W-Zf-3Yg" firstAttribute="bottom" secondItem="28j-ge-2fg" secondAttribute="bottom" id="xNe-0R-F9o"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="28j-ge-2fg"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="o0W-Zf-3Yg" id="CVH-iD-HbX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WT3-QX-o7E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142" y="56"/>
+            <point key="canvasLocation" x="140.57971014492756" y="55.580357142857139"/>
         </scene>
     </scenes>
 </document>
