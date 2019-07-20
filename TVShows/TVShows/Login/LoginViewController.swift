@@ -48,8 +48,13 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction private func createButtonPressed() {
-        if !(usernameTextField.text!.isEmpty) && !(passwordTextField.text!.isEmpty) {
+        guard let username = usernameTextField.text, let password = passwordTextField.text else { return }
+        if !(username.isEmpty) && !(password.isEmpty) {
             _registerUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
+        } else {
+            let alert = UIAlertController(title: "Incomplete form", message: "Please fill out all fields.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true)
         }
     }
     
@@ -121,6 +126,11 @@ final class LoginViewController: UIViewController {
                     self?.navigateToHome()
                 case .failure(let error):
                     print("API failure: \(error)")
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Login failed", message: "Incorrect username or password. Please try again.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                        self?.present(alert, animated: true)
+                    }
                 }
         }
     }
