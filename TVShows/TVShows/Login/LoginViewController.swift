@@ -23,7 +23,6 @@ final class LoginViewController: UIViewController {
     //MARK: - Properties
     
     private var registerUser: User?
-    private var loginUser: LoginData?
     
     //MARK: - Lifecycle methods
     
@@ -122,7 +121,7 @@ final class LoginViewController: UIViewController {
                 switch response.result {
                 case .success(let login):
                     print("Success: \(login)")
-                    self?.loginUser = LoginData(token: login.token)
+                    Container.loginUser = LoginData(token: login.token)
                     self?.navigateToHome()
                 case .failure(let error):
                     print("API failure: \(error)")
@@ -137,8 +136,8 @@ final class LoginViewController: UIViewController {
     
     private func navigateToHome() {
         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-        self.navigationController?.pushViewController(HomeViewController, animated: true)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+        self.navigationController?.pushViewController(homeViewController, animated: true)
     }
 
 }

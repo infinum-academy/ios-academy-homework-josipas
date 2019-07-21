@@ -24,7 +24,7 @@ final class TvShowsTableViewCell: UITableViewCell {
 }
 
 extension TvShowsTableViewCell {
-    func configure(with item: TVShowItem) {
-        title.text = item.name
+    func configure(with item: TvShowItem) {
+        title.text = item.title
     }
 }
