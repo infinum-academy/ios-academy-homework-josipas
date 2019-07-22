@@ -7,31 +7,67 @@
 //
 
 import UIKit
+import Alamofire
+import CodableAlamofire
+import SVProgressHUD
+
+struct ShowDetails : Codable{
+    let type: String
+    let title: String
+    let description: String
+    let id: String
+    let likesCount: Int
+    let imageUrl: String
+    
+    enum CodingKeys: String, CodingKey {
+        case type
+        case title
+        case description
+        case id = "_id"
+        case likesCount
+        case imageUrl
+    }
+}
 
 class ShowDetailsViewController: UIViewController {
 
     @IBOutlet weak var image: UIImageView!
+    
+    var idOfChosenShow = ""
+    private var TvShow : ShowDetails?
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+   
         setUpUI()
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
 private extension ShowDetailsViewController {
     func setUpUI() {
         image.image = UIImage(named: "icImagePlaceholder")
+        
+        if let login = Storage.shared.loginUser {
+            SVProgressHUD.show()
+            let headers = ["Authorization": login.token]
+            Alamofire
+                .request(
+                    "https://api.infinum.academy/api/shows/" + idOfChosenShow,
+                    method: .get,
+                    encoding: JSONEncoding.default,
+                    headers: headers)
+                .validate()
+                .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<ShowDetails>) in
+                    SVProgressHUD.dismiss()
+                    switch response.result {
+                    case .success(let details):
+                        print("Succes: \(details)")
+                        
+                    case .failure(let error):
+                        print("API failure: \(error)")
+                    }
+            }
+        }
     }
 }

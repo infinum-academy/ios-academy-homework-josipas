@@ -30,6 +30,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var shows : [TvShowItem]?
+    var showId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +42,10 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let showDetailsStoryboard = UIStoryboard(name: "ShowDetails", bundle: nil)
-        let showDetailsViewController = showDetailsStoryboard.instantiateViewController(withIdentifier: "ShowDetailsViewContoller")
-        self.navigationController?.pushViewController(showDetailsViewController, animated: true)
-        
+        if let showId = shows?[indexPath.row].id {
+            self.showId=showId
+            navigateToDetails()
+        }
         //let item = shows?[indexPath.row]
         //print("Selected Item: \(item)")
     }
@@ -101,6 +102,15 @@ private extension HomeViewController {
                     
                     self?.tableView.reloadData()
             }
+        }
+    }
+    
+    func navigateToDetails() {
+        let showDetailsStoryboard = UIStoryboard(name: "ShowDetails", bundle: nil)
+        let showDetailsViewController = showDetailsStoryboard.instantiateViewController(withIdentifier: "ShowDetailsViewContoller")
+        if let showDetails = showDetailsViewController as? ShowDetailsViewController {
+            showDetails.idOfChosenShow = self.showId
+            self.navigationController?.pushViewController(showDetailsViewController, animated: true)
         }
     }
 }
