@@ -70,6 +70,8 @@ private extension HomeViewController {
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
+        let homeViewController = self as UIViewController
+        navigationController?.setViewControllers([homeViewController], animated: true)
         
         //prisilno unwrapanje!!! POPRAVI!!! ili?
         let headers = ["Authorization": Container.loginUser!.token]
