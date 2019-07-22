@@ -10,9 +10,10 @@ import UIKit
 
 class ShowDetailsViewController: UIViewController {
 
+    @IBOutlet weak var image: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUpUI()
         // Do any additional setup after loading the view.
     }
     
@@ -27,4 +28,10 @@ class ShowDetailsViewController: UIViewController {
     }
     */
 
+}
+
+private extension ShowDetailsViewController {
+    func setUpUI() {
+        image.image = UIImage(named: "icImagePlaceholder")
+    }
 }
