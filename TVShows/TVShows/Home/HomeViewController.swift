@@ -28,6 +28,7 @@ struct TvShowItem : Codable{
 final class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
     private var shows : [TvShowItem]?
     
     override func viewDidLoad() {
@@ -41,7 +42,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = shows?[indexPath.row]
-        print("Selected Item: \(item)")
+        //print("Selected Item: \(item)")
     }
 }
 
@@ -65,36 +66,37 @@ extension HomeViewController: UITableViewDataSource {
 
 private extension HomeViewController {
     func setupTableView() {
+        let homeViewController = self as UIViewController
+        navigationController?.setViewControllers([homeViewController], animated: true)
         tableView.estimatedRowHeight = 110
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        let homeViewController = self as UIViewController
-        navigationController?.setViewControllers([homeViewController], animated: true)
         
-        //prisilno unwrapanje!!! POPRAVI!!! ili?
-        let headers = ["Authorization": Container.loginUser!.token]
-        Alamofire
-            .request(
-                "https://api.infinum.academy/api/shows",
-                method: .get,
-                encoding: JSONEncoding.default,
-                headers: headers)
-            .validate()
-            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<[TvShowItem]>) in
-                
-                switch response.result {
-                case .success(let shows):
-                    print("Succes: \(shows)")
-                    self?.shows = shows
-                    //print(self?.shows)
+        if let login = Storage.shared.loginUser {
+            let headers = ["Authorization": login.token]
+            SVProgressHUD.show()
+            Alamofire
+                .request(
+                    "https://api.infinum.academy/api/shows",
+                    method: .get,
+                    encoding: JSONEncoding.default,
+                    headers: headers)
+                .validate()
+                .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<[TvShowItem]>) in
+                    SVProgressHUD.dismiss()
+                    switch response.result {
+                    case .success(let shows):
+                        print("Succes: \(shows)")
+                        self?.shows = shows
+                        self?.tableView.reloadData()
+                    case .failure(let error):
+                        print("API failure: \(error)")
+                    }
+                    
                     self?.tableView.reloadData()
-                case .failure(let error):
-                    print("API failure: \(error)")
-                }
-                
-                self?.tableView.reloadData()
+            }
         }
     }
 }

@@ -121,7 +121,7 @@ final class LoginViewController: UIViewController {
                 switch response.result {
                 case .success(let login):
                     print("Success: \(login)")
-                    Container.loginUser = LoginData(token: login.token)
+                    Storage.shared.loginUser = LoginData(token: login.token)
                     self?.navigateToHome()
                 case .failure(let error):
                     print("API failure: \(error)")
@@ -139,5 +139,4 @@ final class LoginViewController: UIViewController {
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
         self.navigationController?.pushViewController(homeViewController, animated: true)
     }
-
 }
