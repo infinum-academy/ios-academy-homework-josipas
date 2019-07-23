@@ -28,6 +28,6 @@ class EpisodeTableViewCell: UITableViewCell {
 extension EpisodeTableViewCell {
     func configure(with item: ShowEpisode) {
         title.text = item.title
-        seasonAndEpisode.text = "S" + item.season + " Ep" + item.episodeNumber
+        seasonAndEpisode.text = "S\(item.season) Ep\(item.episodeNumber)"
     }
 }

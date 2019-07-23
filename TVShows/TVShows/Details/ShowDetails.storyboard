@@ -34,7 +34,7 @@
                                                         <constraint firstAttribute="height" constant="100" id="SxM-XO-lWq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M18-KX-FNf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M18-KX-FNf">
                                                     <rect key="frame" x="0.0" y="100" width="374" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
@@ -198,7 +198,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqW-7z-kS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Title" id="IKc-VN-5U1"/>
             </objects>
-            <point key="canvasLocation" x="-641" y="-276"/>
+            <point key="canvasLocation" x="-1841" y="-390"/>
         </scene>
     </scenes>
     <resources>

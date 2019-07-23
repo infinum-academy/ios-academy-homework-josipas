@@ -57,7 +57,7 @@ class ShowDetailsViewController: UIViewController {
     
     var idOfChosenShow = ""
     private var TvShow : ShowDetails?
-    private var episodes : [ShowEpisode]?
+    private var episodes : [ShowEpisode] = []
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,18 +133,12 @@ extension ShowDetailsViewController: UITableViewDelegate {
 
 extension ShowDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let episodesUnpacked = episodes else {
-            return 0
-        }
-        return episodesUnpacked.count
+        return episodes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeTableViewCell", for: indexPath) as! EpisodeTableViewCell
-        guard let episode = episodes else {
-            return cell
-        }
-        cell.configure(with: episode[indexPath.row])
+        cell.configure(with: episodes[indexPath.row])
         return cell
     }
 }

@@ -103,7 +103,7 @@ private extension HomeViewController {
         let showDetailsStoryboard = UIStoryboard(name: "ShowDetails", bundle: nil)
         let showDetailsViewController = showDetailsStoryboard.instantiateViewController(withIdentifier: "ShowDetailsViewContoller")
         if let showDetails = showDetailsViewController as? ShowDetailsViewController {
-            showDetails.idOfChosenShow = self.showId
+            showDetails.idOfChosenShow = showId
             self.navigationController?.pushViewController(showDetailsViewController, animated: true)
         }
     }
