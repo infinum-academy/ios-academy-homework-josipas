@@ -53,6 +53,7 @@ class ShowDetailsViewController: UIViewController {
     @IBOutlet weak var showTitle: UILabel!
     @IBOutlet weak var showDescription: UITextView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var numberOfEpisodes: UILabel!
     
     var idOfChosenShow = ""
     private var TvShow : ShowDetails?
@@ -105,6 +106,7 @@ private extension ShowDetailsViewController {
                     case .success(let episodes):
                         print("Succes: \(episodes)")
                         self?.episodes = episodes
+                        self?.numberOfEpisodes.text = String(episodes.count)
                         self?.tableView.reloadData()
                     case .failure(let error):
                         print("API failure: \(error)")

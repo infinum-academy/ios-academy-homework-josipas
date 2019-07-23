@@ -41,34 +41,62 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K2D-NL-IF2">
-                                                    <rect key="frame" x="0.0" y="136" width="374" height="188"/>
+                                                    <rect key="frame" x="0.0" y="136" width="374" height="164"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8T-s4-ug8">
-                                                    <rect key="frame" x="0.0" y="324" width="374" height="26"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Episodes">
-                                                            <attributes>
-                                                                <font key="NSFont" metaFont="system" size="22"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lk-Ur-ROJ">
+                                                    <rect key="frame" x="0.0" y="300" width="374" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8T-s4-ug8">
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="u2n-hk-0MN"/>
+                                                            </constraints>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="Episodes">
+                                                                    <attributes>
+                                                                        <font key="NSFont" metaFont="system" size="22"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFz-zA-ivR">
+                                                            <rect key="frame" x="110" y="0.0" width="100" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="zud-4H-xeA"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="KFz-zA-ivR" secondAttribute="bottom" id="5or-IW-ZEu"/>
+                                                        <constraint firstAttribute="bottom" secondItem="h8T-s4-ug8" secondAttribute="bottom" id="AhX-pH-qSm"/>
+                                                        <constraint firstItem="h8T-s4-ug8" firstAttribute="top" secondItem="5lk-Ur-ROJ" secondAttribute="top" id="Gad-sO-kVX"/>
+                                                        <constraint firstItem="h8T-s4-ug8" firstAttribute="height" secondItem="5lk-Ur-ROJ" secondAttribute="height" id="eAu-vs-nTx"/>
+                                                        <constraint firstItem="KFz-zA-ivR" firstAttribute="leading" secondItem="h8T-s4-ug8" secondAttribute="trailing" constant="10" id="fqK-bf-kGe"/>
+                                                        <constraint firstItem="h8T-s4-ug8" firstAttribute="leading" secondItem="5lk-Ur-ROJ" secondAttribute="leading" id="gfL-WU-oRh"/>
+                                                        <constraint firstItem="KFz-zA-ivR" firstAttribute="top" secondItem="5lk-Ur-ROJ" secondAttribute="top" id="yoJ-ID-Y4B"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="M18-KX-FNf" firstAttribute="top" secondItem="hxS-Am-0Q9" secondAttribute="bottom" id="3jt-JE-L9Y"/>
                                                 <constraint firstItem="hxS-Am-0Q9" firstAttribute="top" secondItem="rD3-Hx-kK1" secondAttribute="top" id="4bz-iw-WZd"/>
-                                                <constraint firstAttribute="bottom" secondItem="h8T-s4-ug8" secondAttribute="bottom" id="QuE-FP-dE8"/>
                                                 <constraint firstAttribute="height" constant="350" id="Qve-H5-pyk"/>
+                                                <constraint firstItem="5lk-Ur-ROJ" firstAttribute="top" secondItem="K2D-NL-IF2" secondAttribute="bottom" id="RD0-Ep-3jp"/>
                                                 <constraint firstItem="hxS-Am-0Q9" firstAttribute="leading" secondItem="rD3-Hx-kK1" secondAttribute="leading" id="Tnw-uz-ugx"/>
-                                                <constraint firstItem="K2D-NL-IF2" firstAttribute="top" secondItem="M18-KX-FNf" secondAttribute="bottom" id="VzN-06-M03"/>
-                                                <constraint firstItem="h8T-s4-ug8" firstAttribute="top" secondItem="K2D-NL-IF2" secondAttribute="bottom" id="daW-HG-anf"/>
-                                                <constraint firstItem="K2D-NL-IF2" firstAttribute="top" secondItem="M18-KX-FNf" secondAttribute="bottom" id="kWG-VW-aOu"/>
+                                                <constraint firstItem="K2D-NL-IF2" firstAttribute="top" secondItem="M18-KX-FNf" secondAttribute="bottom" id="XeG-49-kwD"/>
+                                                <constraint firstItem="K2D-NL-IF2" firstAttribute="top" secondItem="M18-KX-FNf" secondAttribute="bottom" id="b8S-hf-Wad"/>
+                                                <constraint firstAttribute="bottom" secondItem="5lk-Ur-ROJ" secondAttribute="bottom" id="c0I-G4-yZ7"/>
+                                                <constraint firstItem="M18-KX-FNf" firstAttribute="top" secondItem="hxS-Am-0Q9" secondAttribute="bottom" id="dwn-WJ-mXa"/>
                                                 <constraint firstItem="hxS-Am-0Q9" firstAttribute="top" secondItem="rD3-Hx-kK1" secondAttribute="top" id="qME-wC-2em"/>
                                             </constraints>
                                         </stackView>
@@ -149,17 +177,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Se-BE-hdA"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KcM-ha-zte"/>
+                    <navigationItem key="navigationItem" id="DI2-7L-NTT"/>
                     <connections>
                         <outlet property="image" destination="hxS-Am-0Q9" id="5Ot-Ix-rwd"/>
+                        <outlet property="numberOfEpisodes" destination="KFz-zA-ivR" id="jXG-3D-dYJ"/>
                         <outlet property="showDescription" destination="K2D-NL-IF2" id="uRw-H7-90w"/>
                         <outlet property="showTitle" destination="M18-KX-FNf" id="xLP-3l-6pV"/>
                         <outlet property="tableView" destination="713-1L-OXm" id="zFM-AZ-g6P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqW-7z-kS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="Title" id="IKc-VN-5U1"/>
             </objects>
-            <point key="canvasLocation" x="-449.27536231884062" y="-163.39285714285714"/>
+            <point key="canvasLocation" x="-641" y="-276"/>
         </scene>
     </scenes>
     <resources>
