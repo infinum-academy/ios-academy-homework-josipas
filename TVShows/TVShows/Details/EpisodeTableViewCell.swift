@@ -10,7 +10,9 @@ import UIKit
 
 class EpisodeTableViewCell: UITableViewCell {
     
+  
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var seasonAndEpisode: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,8 +27,7 @@ class EpisodeTableViewCell: UITableViewCell {
 
 extension EpisodeTableViewCell {
     func configure(with item: ShowEpisode) {
-        print("naslov:")
-        print(item.title)
         title.text = item.title
+        seasonAndEpisode.text = "S" + item.season + " Ep" + item.episodeNumber
     }
 }

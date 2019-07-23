@@ -66,7 +66,6 @@ class ShowDetailsViewController: UIViewController {
 
 private extension ShowDetailsViewController {
     func setUpUI() {
-        image.image = UIImage(named: "icImagePlaceholder")
         tableView.delegate = self
         tableView.dataSource = self
         
