@@ -35,7 +35,6 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -99,8 +98,6 @@ private extension HomeViewController {
                     case .failure(let error):
                         print("API failure: \(error)")
                     }
-                    
-                    self?.tableView.reloadData()
             }
         }
     }
