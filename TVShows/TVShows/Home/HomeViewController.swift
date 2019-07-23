@@ -45,8 +45,6 @@ extension HomeViewController: UITableViewDelegate {
             self.showId=showId
             navigateToDetails()
         }
-        //let item = shows?[indexPath.row]
-        //print("Selected Item: \(item)")
     }
 }
 
@@ -72,7 +70,6 @@ private extension HomeViewController {
     func setupTableView() {
         let homeViewController = self as UIViewController
         navigationController?.setViewControllers([homeViewController], animated: true)
-        tableView.estimatedRowHeight = 110
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         tableView.delegate = self

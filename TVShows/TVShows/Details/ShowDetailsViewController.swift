@@ -63,6 +63,15 @@ class ShowDetailsViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    @IBAction func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 private extension ShowDetailsViewController {

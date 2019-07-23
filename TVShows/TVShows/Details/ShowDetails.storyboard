@@ -165,9 +165,18 @@
                                 <rect key="frame" x="316" y="758" width="68" height="74"/>
                                 <state key="normal" image="ic-fab-button"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntd-qR-I7d">
+                                <rect key="frame" x="20" y="64" width="86" height="32"/>
+                                <state key="normal" title="Button" image="ic-navigate-back"/>
+                                <connections>
+                                    <action selector="backButtonTapped" destination="Pcf-cN-OB9" eventType="touchUpInside" id="o6e-YM-kbz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ntd-qR-I7d" firstAttribute="top" secondItem="2Se-BE-hdA" secondAttribute="top" constant="20" id="489-ov-ASL"/>
+                            <constraint firstItem="ntd-qR-I7d" firstAttribute="leading" secondItem="2Se-BE-hdA" secondAttribute="leading" constant="20" id="Fgx-5n-oar"/>
                             <constraint firstItem="2Se-BE-hdA" firstAttribute="bottom" secondItem="bGI-t2-ZcX" secondAttribute="bottom" constant="30" id="LP9-GE-2tO"/>
                             <constraint firstItem="713-1L-OXm" firstAttribute="trailing" secondItem="2Se-BE-hdA" secondAttribute="trailing" id="RHo-NO-g9t"/>
                             <constraint firstItem="713-1L-OXm" firstAttribute="leading" secondItem="2Se-BE-hdA" secondAttribute="leading" id="Uls-YF-AL3"/>
@@ -194,6 +203,7 @@
     </scenes>
     <resources>
         <image name="ic-fab-button" width="68" height="74"/>
+        <image name="ic-navigate-back" width="32" height="32"/>
         <image name="ic-navigation-chevron-right-medium" width="24" height="24"/>
     </resources>
 </document>
