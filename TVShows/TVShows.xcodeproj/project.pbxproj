@@ -3,12 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		425ADB1A22D28A720057AEC7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ADB1922D28A720057AEC7 /* LoginViewController.swift */; };
 		425ADB2422D29AF90057AEC7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425ADB2322D29AF90057AEC7 /* Login.storyboard */; };
+		4266F2BB22DDC94B00B5909F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4266F2BA22DDC94B00B5909F /* User.swift */; };
+		42A16D7522DC6BA500EBE739 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A16D7422DC6BA500EBE739 /* HomeViewController.swift */; };
+		42A16D7722DC6BBD00EBE739 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42A16D7622DC6BBD00EBE739 /* Home.storyboard */; };
 		42BFB61322CE53B600D06871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BFB61222CE53B600D06871 /* AppDelegate.swift */; };
 		42BFB61A22CE53B700D06871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42BFB61922CE53B700D06871 /* Assets.xcassets */; };
 		42BFB61D22CE53B700D06871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BFB61B22CE53B700D06871 /* LaunchScreen.storyboard */; };
@@ -18,6 +21,9 @@
 /* Begin PBXFileReference section */
 		425ADB1922D28A720057AEC7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		425ADB2322D29AF90057AEC7 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		4266F2BA22DDC94B00B5909F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		42A16D7422DC6BA500EBE739 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		42A16D7622DC6BBD00EBE739 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		42BFB60F22CE53B600D06871 /* TVShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42BFB61222CE53B600D06871 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42BFB61922CE53B700D06871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,8 +51,29 @@
 			children = (
 				425ADB1922D28A720057AEC7 /* LoginViewController.swift */,
 				425ADB2322D29AF90057AEC7 /* Login.storyboard */,
+				4266F2BA22DDC94B00B5909F /* User.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		42A16D7122DC6A4E00EBE739 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42BFB61222CE53B600D06871 /* AppDelegate.swift */,
+				42BFB61922CE53B700D06871 /* Assets.xcassets */,
+				42BFB61B22CE53B700D06871 /* LaunchScreen.storyboard */,
+				42BFB61E22CE53B700D06871 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		42A16D7322DC6B4C00EBE739 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				42A16D7422DC6BA500EBE739 /* HomeViewController.swift */,
+				42A16D7622DC6BBD00EBE739 /* Home.storyboard */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		42BFB60622CE53B600D06871 = {
@@ -70,11 +97,9 @@
 		42BFB61122CE53B600D06871 /* TVShows */ = {
 			isa = PBXGroup;
 			children = (
+				42A16D7122DC6A4E00EBE739 /* Resources */,
+				42A16D7322DC6B4C00EBE739 /* Home */,
 				425ADB1222D2897E0057AEC7 /* Login */,
-				42BFB61222CE53B600D06871 /* AppDelegate.swift */,
-				42BFB61922CE53B700D06871 /* Assets.xcassets */,
-				42BFB61B22CE53B700D06871 /* LaunchScreen.storyboard */,
-				42BFB61E22CE53B700D06871 /* Info.plist */,
 			);
 			path = TVShows;
 			sourceTree = "<group>";
@@ -93,7 +118,6 @@
 				6B418729453E24C530A04E14 /* Pods-TVShows.debug.xcconfig */,
 				8083B2D7FAD95CD1F84F3669 /* Pods-TVShows.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -108,7 +132,7 @@
 				42BFB60B22CE53B600D06871 /* Sources */,
 				42BFB60C22CE53B600D06871 /* Frameworks */,
 				42BFB60D22CE53B600D06871 /* Resources */,
-				8D14A24E51BEAC0ECAE0D564 /* [CP] Embed Pods Frameworks */,
+				E8CA33B076950E21DCA79723 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,6 +183,7 @@
 			files = (
 				42BFB61D22CE53B700D06871 /* LaunchScreen.storyboard in Resources */,
 				42BFB61A22CE53B700D06871 /* Assets.xcassets in Resources */,
+				42A16D7722DC6BBD00EBE739 /* Home.storyboard in Resources */,
 				425ADB2422D29AF90057AEC7 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,7 +213,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8D14A24E51BEAC0ECAE0D564 /* [CP] Embed Pods Frameworks */ = {
+		E8CA33B076950E21DCA79723 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -212,8 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4266F2BB22DDC94B00B5909F /* User.swift in Sources */,
 				425ADB1A22D28A720057AEC7 /* LoginViewController.swift in Sources */,
 				42BFB61322CE53B600D06871 /* AppDelegate.swift in Sources */,
+				42A16D7522DC6BA500EBE739 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +380,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TVShows/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TVShows/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -371,7 +398,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TVShows/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TVShows/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -7,50 +7,128 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
+import CodableAlamofire
 
 final class LoginViewController: UIViewController {
-
+    
+   
     //MARK: - Outlets
-    
-    @IBOutlet private weak var activityIndicator : UIActivityIndicatorView!
-    @IBOutlet private weak var counterLabel: UILabel!
-    @IBOutlet private weak var touchCounterButton: UIButton!
-    
+   
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     //MARK: - Properties
     
-    private var numberOfClicks : Int = 0
+    private var registerUser: User?
+    private var loginUser: LoginData?
     
     //MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //touchCounterButton.backgroundColor = UIColor.purple
-        //touchCounterButton.layer.cornerRadius = 10
         
-        // Do any additional setup after loading the view.
+        loginButton.layer.cornerRadius = 10
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+    
     
     //MARK: - Actions
+    @IBAction private func checkboxTouched(_ sender: UIButton) {
+       sender.isSelected.toggle()
+    }
+
+    @IBAction private func loginButtonPressed() {
+        guard let username = usernameTextField.text, let password = passwordTextField.text else { return }
+        _loginUserWith(email: username, password: password)
+    }
     
-    @IBAction func onButtonClick() {
-        numberOfClicks += 1
-        //print("Click!")
-        counterLabel.text = String(numberOfClicks)
-        
-        if activityIndicator.isAnimating {
-            activityIndicator.stopAnimating()
-        } else {
-            activityIndicator.startAnimating()
+    @IBAction private func createButtonPressed() {
+        if !(usernameTextField.text!.isEmpty) && !(passwordTextField.text!.isEmpty) {
+            _registerUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+   @objc private func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            scrollView.contentInset = .zero
+        } else {
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+        }
     }
-    */
+    
+    private func _registerUserWith(email: String, password: String) {
+        SVProgressHUD.show()
+        
+        let parameters: [String: String] = [
+            "email": email,
+            "password": password
+        ]
+        
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/users",
+                method: .post,
+                parameters: parameters,
+                encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<User>) in
+                
+                SVProgressHUD.dismiss()
+                switch response.result {
+                case .success(let user):
+                    print("Success: \(user)")
+                    self?.registerUser = User(email: user.email, type: user.type, id: user.id)
+                    self?.navigateToHome()
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
+            }
+        }
+    
+    private func _loginUserWith(email: String, password: String) {
+        SVProgressHUD.show()
+        
+        let parameters: [String: String] = [
+            "email": email,
+            "password": password
+        ]
+        
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/users/sessions",
+                method: .post,
+                parameters: parameters,
+                encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<LoginData>) in
+                
+                SVProgressHUD.dismiss()
+                switch response.result {
+                case .success(let login):
+                    print("Success: \(login)")
+                    self?.loginUser = LoginData(token: login.token)
+                    self?.navigateToHome()
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
+        }
+    }
+    
+    private func navigateToHome() {
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+        self.navigationController?.pushViewController(HomeViewController, animated: true)
+    }
 
 }
