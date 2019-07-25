@@ -164,10 +164,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGI-t2-ZcX">
                                 <rect key="frame" x="316" y="758" width="68" height="74"/>
                                 <state key="normal" image="ic-fab-button"/>
+                                <connections>
+                                    <action selector="addButtonTapped" destination="Pcf-cN-OB9" eventType="touchUpInside" id="LwH-cs-Qn5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntd-qR-I7d">
-                                <rect key="frame" x="20" y="64" width="86" height="32"/>
-                                <state key="normal" title="Button" image="ic-navigate-back"/>
+                                <rect key="frame" x="20" y="64" width="32" height="32"/>
+                                <state key="normal" image="ic-navigate-back"/>
                                 <connections>
                                     <action selector="backButtonTapped" destination="Pcf-cN-OB9" eventType="touchUpInside" id="o6e-YM-kbz"/>
                                 </connections>
@@ -198,7 +201,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqW-7z-kS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Title" id="IKc-VN-5U1"/>
             </objects>
-            <point key="canvasLocation" x="-1841" y="-390"/>
+            <point key="canvasLocation" x="-1809" y="-528"/>
         </scene>
     </scenes>
     <resources>

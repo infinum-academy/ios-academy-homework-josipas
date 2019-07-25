@@ -72,6 +72,11 @@ class ShowDetailsViewController: UIViewController {
     @IBAction func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func addButtonTapped() {
+        navigateToAddNewEpisode()
+    }
+    
 }
 
 private extension ShowDetailsViewController {
@@ -122,6 +127,13 @@ private extension ShowDetailsViewController {
                     }
             }
         }
+    }
+    
+    func navigateToAddNewEpisode() {
+        let addNewEpisodeStoryboard = UIStoryboard(name: "AddNewEpisode", bundle: nil)
+        let addNewEpisodeViewController = addNewEpisodeStoryboard.instantiateViewController(withIdentifier: "AddNewEpisodeViewController")
+        let naavigationController = UINavigationController(rootViewController: addNewEpisodeViewController)
+        self.navigationController?.present(naavigationController, animated: true)
     }
 }
 

@@ -52,7 +52,7 @@ final class LoginViewController: UIViewController {
             _registerUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
         } else {
             let alert = UIAlertController(title: "Incomplete form", message: "Please fill out all fields.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true)
         }
     }
@@ -127,7 +127,7 @@ final class LoginViewController: UIViewController {
                     print("API failure: \(error)")
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Login failed", message: "Incorrect username or password. Please try again.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self?.present(alert, animated: true)
                     }
                 }

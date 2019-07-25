@@ -29,7 +29,7 @@ final class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var shows : [TvShowItem]?
+    private var shows : [TvShowItem] = []
     var showId = ""
     
     override func viewDidLoad() {
@@ -41,27 +41,19 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let showId = shows?[indexPath.row].id {
-            self.showId=showId
+            self.showId = shows[indexPath.row].id
             navigateToDetails()
-        }
     }
 }
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let showUnpacked = shows else {
-            return 0
-        }
-        return showUnpacked.count
+        return shows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TvShowsTableViewCell", for: indexPath) as! TvShowsTableViewCell
-        guard let show = shows else {
-            return cell
-        }
-        cell.configure(with: show[indexPath.row])
+        cell.configure(with: shows[indexPath.row])
         return cell
     }
 }
