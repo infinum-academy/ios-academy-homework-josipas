@@ -62,6 +62,7 @@ private extension HomeViewController {
     func setupTableView() {
         let homeViewController = self as UIViewController
         navigationController?.setViewControllers([homeViewController], animated: true)
+        title = "Shows"
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         tableView.delegate = self
