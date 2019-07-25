@@ -15,7 +15,4 @@ final class Storage {
     var loginUser: LoginData?
     
     private init() {}
-
-    // UserDefaults
-    // Keychain -> KeychainAccess
 }
