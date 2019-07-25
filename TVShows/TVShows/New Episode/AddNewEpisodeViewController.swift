@@ -75,8 +75,9 @@ private extension AddNewEpisodeViewController {
                     encoding: JSONEncoding.default,
                     headers: headers)
                 .validate()
-                .responseData { response in
+                .responseData { [weak self] response in
                         SVProgressHUD.dismiss()
+                        guard let self = self else { return }
                         switch response.result {
                         case .success(let episode):
                             print("Succes: \(episode)")
@@ -84,6 +85,11 @@ private extension AddNewEpisodeViewController {
                             self.presentingViewController?.dismiss(animated: true, completion:nil)
                         case .failure(let error):
                             print("API failure: \(error)")
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "Failure!", message: "Can't add this epizode!", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                self.present(alert, animated: true)
+                            }
                 }
             }
         }

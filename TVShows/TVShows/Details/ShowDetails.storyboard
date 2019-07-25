@@ -104,9 +104,9 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="rD3-Hx-kK1" firstAttribute="leading" secondItem="ttR-9S-XbP" secondAttribute="leading" constant="20" id="4Kv-fZ-H7e"/>
-                                        <constraint firstItem="rD3-Hx-kK1" firstAttribute="height" secondItem="dZ5-Sg-2Ch" secondAttribute="height" id="Bmq-Lk-2Ln"/>
                                         <constraint firstItem="rD3-Hx-kK1" firstAttribute="top" secondItem="dZ5-Sg-2Ch" secondAttribute="top" id="HeL-2h-0Mf"/>
                                         <constraint firstItem="rD3-Hx-kK1" firstAttribute="trailing" secondItem="ttR-9S-XbP" secondAttribute="trailing" constant="-20" id="L4v-F7-Ykg"/>
+                                        <constraint firstAttribute="bottom" secondItem="rD3-Hx-kK1" secondAttribute="bottom" id="yFK-wv-ddX"/>
                                     </constraints>
                                     <viewLayoutGuide key="safeArea" id="ttR-9S-XbP"/>
                                 </view>

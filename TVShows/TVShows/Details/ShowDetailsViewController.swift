@@ -70,6 +70,11 @@ final class ShowDetailsViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.fixTableHeaderViewHeight()
+    }
+    
     @IBAction func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -174,4 +179,36 @@ extension ShowDetailsViewController : AddNewEpisodeDelegate {
     func reloadEpisodes() {
         getEpisodes()
     }
+}
+
+extension UITableView {
+    
+    func fixTableHeaderViewHeight(for size: CGSize = CGSize(width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude)) {
+        guard let headerView = tableHeaderView else { return }
+        let headerSize: CGSize
+        if #available(iOS 10.0, *) {
+            headerSize = headerView.systemLayoutSizeFitting(size)
+        } else {
+            headerSize = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        }
+        if headerView.bounds.height == headerSize.height { return }
+        headerView.bounds.size.height = headerSize.height
+        headerView.layoutIfNeeded()
+        tableHeaderView = headerView
+    }
+    
+    func fixTableFooterViewHeight(for size: CGSize = CGSize(width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude)) {
+        guard let footerView = tableFooterView else { return }
+        let footerSize: CGSize
+        if #available(iOS 10.0, *) {
+            footerSize = footerView.systemLayoutSizeFitting(size)
+        } else {
+            footerSize = footerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        }
+        if footerView.bounds.height == footerSize.height { return }
+        footerView.bounds.size.height = footerSize.height
+        footerView.layoutIfNeeded()
+        tableFooterView = footerView
+    }
+    
 }
