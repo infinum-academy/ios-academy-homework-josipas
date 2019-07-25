@@ -123,6 +123,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CG8-nA-zw8"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionField" destination="bJp-1d-Mkt" id="KqH-eb-7uT"/>
+                        <outlet property="episodeNumberField" destination="QGS-n4-Cck" id="QaP-rv-2Vp"/>
+                        <outlet property="episodeTitleField" destination="nOs-5l-T0v" id="s40-Ul-CAz"/>
+                        <outlet property="seasonField" destination="lEL-HP-AgU" id="Atz-rd-EH9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2I-8H-nrE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,19 +12,13 @@ import Alamofire
 import CodableAlamofire
 
 final class LoginViewController: UIViewController {
-    
-   
-    //MARK: - Outlets
    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    //MARK: - Properties
     
     private var registerUser: User?
-    
-    //MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +29,6 @@ final class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
-    
-    //MARK: - Actions
     @IBAction private func checkboxTouched(_ sender: UIButton) {
        sender.isSelected.toggle()
     }
@@ -56,7 +48,6 @@ final class LoginViewController: UIViewController {
             present(alert, animated: true)
         }
     }
-    
     
    @objc private func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }

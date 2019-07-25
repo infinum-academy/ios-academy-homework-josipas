@@ -47,7 +47,7 @@ struct ShowEpisode: Codable{
     }
 }
 
-class ShowDetailsViewController: UIViewController {
+final class ShowDetailsViewController: UIViewController {
 
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var showTitle: UILabel!
@@ -85,6 +85,7 @@ private extension ShowDetailsViewController {
         tableView.dataSource = self
         
         if let login = Storage.shared.loginUser {
+            print(login.token)
             SVProgressHUD.show()
             let headers = ["Authorization": login.token]
             Alamofire
@@ -132,8 +133,11 @@ private extension ShowDetailsViewController {
     func navigateToAddNewEpisode() {
         let addNewEpisodeStoryboard = UIStoryboard(name: "AddNewEpisode", bundle: nil)
         let addNewEpisodeViewController = addNewEpisodeStoryboard.instantiateViewController(withIdentifier: "AddNewEpisodeViewController")
+        if let addNewEpisode = addNewEpisodeViewController as? AddNewEpisodeViewController {
+            addNewEpisode.showId = idOfChosenShow
+        }
         let naavigationController = UINavigationController(rootViewController: addNewEpisodeViewController)
-        self.navigationController?.present(naavigationController, animated: true)
+    self.navigationController?.present(naavigationController, animated: true)
     }
 }
 
