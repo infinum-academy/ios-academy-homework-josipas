@@ -11,22 +11,8 @@ import Alamofire
 import CodableAlamofire
 import SVProgressHUD
 
-struct Episode: Codable{
-    let showId: String
-    let mediaId: String
-    let title: String
-    let description: String
-    let episodeNumber: String
-    let season: String
-    
-    enum CodingKeys: String, CodingKey {
-        case showId
-        case mediaId
-        case title
-        case description
-        case episodeNumber
-        case season
-    }
+protocol AddNewEpisodeDelegate: class {
+    func reloadEpisodes()
 }
 
 class AddNewEpisodeViewController: UIViewController {
@@ -37,6 +23,7 @@ class AddNewEpisodeViewController: UIViewController {
     @IBOutlet weak var descriptionField: UITextField!
     
     var showId = ""
+    weak var delegate: AddNewEpisodeDelegate?
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +80,8 @@ private extension AddNewEpisodeViewController {
                         switch response.result {
                         case .success(let episode):
                             print("Succes: \(episode)")
+                            self.delegate?.reloadEpisodes()
+                            self.presentingViewController?.dismiss(animated: true, completion:nil)
                         case .failure(let error):
                             print("API failure: \(error)")
                 }

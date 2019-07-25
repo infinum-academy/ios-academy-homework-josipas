@@ -61,6 +61,7 @@ final class ShowDetailsViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setUpUI()
     }
     
@@ -84,6 +85,22 @@ private extension ShowDetailsViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        getShowDetails()
+        getEpisodes()
+    }
+    
+    func navigateToAddNewEpisode() {
+        let addNewEpisodeStoryboard = UIStoryboard(name: "AddNewEpisode", bundle: nil)
+        let addNewEpisodeViewController = addNewEpisodeStoryboard.instantiateViewController(withIdentifier: "AddNewEpisodeViewController")
+        if let addNewEpisode = addNewEpisodeViewController as? AddNewEpisodeViewController {
+            addNewEpisode.showId = idOfChosenShow
+            addNewEpisode.delegate = self
+        }
+        let naavigationController = UINavigationController(rootViewController: addNewEpisodeViewController)
+        self.navigationController?.present(naavigationController, animated: true)
+    }
+    
+    func getShowDetails() {
         if let login = Storage.shared.loginUser {
             print(login.token)
             SVProgressHUD.show()
@@ -106,8 +123,13 @@ private extension ShowDetailsViewController {
                         print("API failure: \(error)")
                     }
             }
-            
+        }
+    }
+    
+    func getEpisodes() {
+        if let login = Storage.shared.loginUser {
             SVProgressHUD.show()
+            let headers = ["Authorization": login.token]
             Alamofire
                 .request(
                     "https://api.infinum.academy/api/shows/" + idOfChosenShow + "/episodes",
@@ -129,21 +151,10 @@ private extension ShowDetailsViewController {
             }
         }
     }
-    
-    func navigateToAddNewEpisode() {
-        let addNewEpisodeStoryboard = UIStoryboard(name: "AddNewEpisode", bundle: nil)
-        let addNewEpisodeViewController = addNewEpisodeStoryboard.instantiateViewController(withIdentifier: "AddNewEpisodeViewController")
-        if let addNewEpisode = addNewEpisodeViewController as? AddNewEpisodeViewController {
-            addNewEpisode.showId = idOfChosenShow
-        }
-        let naavigationController = UINavigationController(rootViewController: addNewEpisodeViewController)
-    self.navigationController?.present(naavigationController, animated: true)
-    }
 }
 
 extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }
 
@@ -156,5 +167,11 @@ extension ShowDetailsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeTableViewCell", for: indexPath) as! EpisodeTableViewCell
         cell.configure(with: episodes[indexPath.row])
         return cell
+    }
+}
+
+extension ShowDetailsViewController : AddNewEpisodeDelegate {
+    func reloadEpisodes() {
+        getEpisodes()
     }
 }
