@@ -19,6 +19,8 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     private var registerUser: User?
+    private var isCheckBoxSelected = false
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +38,34 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction private func checkboxTouched(_ sender: UIButton) {
-       sender.isSelected.toggle()
+        sender.isSelected.toggle()
+        if sender.isSelected {
+            isCheckBoxSelected = true
+        } else {
+            isCheckBoxSelected = false
+        }
     }
 
     @IBAction private func loginButtonPressed() {
         guard let username = usernameTextField.text, let password = passwordTextField.text else { return }
+        if isCheckBoxSelected {
+            saveDataToUserDefaults(username: username, password: password)
+        }
+        if defaults.bool(forKey: "isCheckBoxSelected") {
+            guard let username = defaults.object(forKey: Keys.username) as? String, let password = defaults.object(forKey: Keys.password) as? String
+            else { return }
+            _loginUserWith(email: username, password: password)
+        } else {
         _loginUserWith(email: username, password: password)
+        }
     }
     
     @IBAction private func createButtonPressed() {
         guard let username = usernameTextField.text, let password = passwordTextField.text else { return }
         if !(username.isEmpty) && !(password.isEmpty) {
+            if isCheckBoxSelected {
+                saveDataToUserDefaults(username: username, password: password)
+            }
             _registerUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
         } else {
             let alert = UIAlertController(title: "Incomplete form", message: "Please fill out all fields.", preferredStyle: .alert)
@@ -135,5 +154,11 @@ final class LoginViewController: UIViewController {
         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
         self.navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    private func saveDataToUserDefaults(username: String, password: String) {
+        defaults.set(username, forKey: Keys.username)
+        defaults.set(password, forKey: Keys.password)
+        defaults.set(true, forKey: Keys.isCheckBoxSelected)
     }
 }

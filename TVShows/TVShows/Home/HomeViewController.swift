@@ -125,6 +125,14 @@ private extension HomeViewController {
     }
     
     @objc private func _logoutActionHandler() {
+        let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let loginViewController = loginStoryboard.instantiateViewController(withIdentifier: "LoginViewController")
+        if let login = loginViewController as? LoginViewController {
+            login.defaults.removeObject(forKey: Keys.isCheckBoxSelected)
+            login.defaults.removeObject(forKey: Keys.password)
+            login.defaults.removeObject(forKey: Keys.username)
+            self.navigationController?.setViewControllers([loginViewController], animated: true)
+        }
         
     }
 }
