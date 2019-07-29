@@ -162,6 +162,8 @@ final class LoginViewController: UIViewController {
     }
     
     private func loginFailed() {
+        self.usernameTextField.text = ""
+        self.passwordTextField.text = ""
         let pulseAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
         pulseAnimation.duration = 1
         pulseAnimation.fromValue = 0
