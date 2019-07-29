@@ -61,7 +61,6 @@ final class ShowDetailsViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUpUI()
     }
     

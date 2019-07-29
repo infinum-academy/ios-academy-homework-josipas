@@ -34,7 +34,13 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNavigationBar()
         setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
 
@@ -62,7 +68,7 @@ private extension HomeViewController {
     func setupTableView() {
         let homeViewController = self as UIViewController
         navigationController?.setViewControllers([homeViewController], animated: true)
-        title = "Shows"
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         tableView.delegate = self
@@ -92,6 +98,22 @@ private extension HomeViewController {
         }
     }
     
+    func setUpNavigationBar() {
+        let navigationBar = navigationController?.navigationBar
+        navigationBar?.barTintColor = .white
+        navigationBar?.isTranslucent = false
+        navigationBar?.setBackgroundImage(UIImage(), for: .default)
+        navigationBar?.shadowImage = UIImage()
+        
+        let logoutItem = UIBarButtonItem.init(
+            title: "Log out",
+            style: .plain,
+            target: self,
+            action: #selector(_logoutActionHandler))
+        navigationItem.leftBarButtonItem = logoutItem
+        self.navigationItem.title = "Shows"
+    }
+    
     func navigateToDetails() {
         let showDetailsStoryboard = UIStoryboard(name: "ShowDetails", bundle: nil)
         let showDetailsViewController = showDetailsStoryboard.instantiateViewController(withIdentifier: "ShowDetailsViewContoller")
@@ -99,6 +121,10 @@ private extension HomeViewController {
             showDetails.idOfChosenShow = showId
             self.navigationController?.pushViewController(showDetailsViewController, animated: true)
         }
+    }
+    
+    @objc private func _logoutActionHandler() {
+        
     }
 }
 
