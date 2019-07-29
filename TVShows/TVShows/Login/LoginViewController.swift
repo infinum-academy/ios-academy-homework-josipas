@@ -47,7 +47,8 @@ final class LoginViewController: UIViewController {
     }
 
     @IBAction private func loginButtonPressed() {
-        guard let username = usernameTextField.text, let password = passwordTextField.text else { return }
+        guard let username = usernameTextField.text, let password = passwordTextField.text else {
+            return }
         if isCheckBoxSelected {
             saveDataToUserDefaults(username: username, password: password)
         }
@@ -142,9 +143,7 @@ final class LoginViewController: UIViewController {
                 case .failure(let error):
                     print("API failure: \(error)")
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Login failed", message: "Incorrect username or password. Please try again.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        self?.present(alert, animated: true)
+                        self?.loginFailed()
                     }
                 }
         }
@@ -160,5 +159,20 @@ final class LoginViewController: UIViewController {
         defaults.set(username, forKey: Keys.username)
         defaults.set(password, forKey: Keys.password)
         defaults.set(true, forKey: Keys.isCheckBoxSelected)
+    }
+    
+    private func loginFailed() {
+        let pulseAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        pulseAnimation.duration = 1
+        pulseAnimation.fromValue = 0
+        pulseAnimation.toValue = 1
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = 2
+        self.passwordTextField.layer.add(pulseAnimation, forKey: "animateOpacity")
+        self.usernameTextField.layer.add(pulseAnimation, forKey: "animateOpacity")
+//        let alert = UIAlertController(title: "Login failed", message: "Incorrect username or password. Please try again.", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//        self.present(alert, animated: true)
     }
 }
