@@ -104,9 +104,10 @@ private extension HomeViewController {
         navigationBar?.isTranslucent = false
         navigationBar?.setBackgroundImage(UIImage(), for: .default)
         navigationBar?.shadowImage = UIImage()
+        navigationBar?.tintColor = UIColor.black
         
         let logoutItem = UIBarButtonItem.init(
-            title: "Log out",
+            image: UIImage(named: "ic-logout"),
             style: .plain,
             target: self,
             action: #selector(_logoutActionHandler))
