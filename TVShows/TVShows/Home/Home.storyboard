@@ -31,17 +31,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="v7c-uj-okQ">
-                                                    <rect key="frame" x="20" y="0.0" width="344" height="43.5"/>
+                                                    <rect key="frame" x="20" y="10" width="344" height="23.5"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LOr-Mj-n88">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="23.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="80" id="Iks-Ha-7gu"/>
                                                                 <constraint firstAttribute="height" priority="999" constant="100" id="lMo-aX-mty"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2em-RV-uGT">
-                                                            <rect key="frame" x="100" y="0.0" width="244" height="43.5"/>
+                                                            <rect key="frame" x="100" y="0.0" width="244" height="23.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -51,12 +51,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="v7c-uj-okQ" secondAttribute="trailing" constant="20" id="Vcy-5a-y6I"/>
-                                                <constraint firstAttribute="bottom" secondItem="v7c-uj-okQ" secondAttribute="bottom" id="ZIu-wn-M0e"/>
+                                                <constraint firstAttribute="bottom" secondItem="v7c-uj-okQ" secondAttribute="bottom" constant="10" id="ZIu-wn-M0e"/>
                                                 <constraint firstItem="v7c-uj-okQ" firstAttribute="leading" secondItem="nfp-9j-Zqd" secondAttribute="leading" constant="20" id="dqk-70-QMB"/>
-                                                <constraint firstItem="v7c-uj-okQ" firstAttribute="top" secondItem="nfp-9j-Zqd" secondAttribute="top" id="lgt-uG-e3s"/>
+                                                <constraint firstItem="v7c-uj-okQ" firstAttribute="top" secondItem="nfp-9j-Zqd" secondAttribute="top" constant="10" id="lgt-uG-e3s"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="myImage" destination="LOr-Mj-n88" id="Jd1-vd-yGx"/>
                                             <outlet property="title" destination="2em-RV-uGT" id="ROG-lR-0CF"/>
                                         </connections>
                                     </tableViewCell>
