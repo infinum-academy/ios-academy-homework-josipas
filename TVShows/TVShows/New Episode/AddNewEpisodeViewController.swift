@@ -10,13 +10,15 @@ import UIKit
 import Alamofire
 import CodableAlamofire
 import SVProgressHUD
+import Photos
 
 protocol AddNewEpisodeDelegate: class {
     func reloadEpisodes()
 }
 
-class AddNewEpisodeViewController: UIViewController {
+final class AddNewEpisodeViewController: UIViewController, UINavigationControllerDelegate {
     
+    @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var episodeTitleField: UITextField!
     @IBOutlet weak var seasonField: UITextField!
     @IBOutlet weak var episodeNumberField: UITextField!
@@ -24,11 +26,26 @@ class AddNewEpisodeViewController: UIViewController {
     
     var showId : String?
     weak var delegate: AddNewEpisodeDelegate?
-   
+    var imagePicker : UIImagePickerController?
+    var chosenImage : UIImage?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkPermission()
+        //imagePicker.delegate = self
         title = "Add episode"
         setUpUI()
+    }
+    @IBAction func addPhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
+            imagePicker = UIImagePickerController()
+            guard let imagePicker = imagePicker else { return }
+            imagePicker.delegate = self
+            imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = .photoLibrary
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
 }
 
@@ -96,6 +113,41 @@ private extension AddNewEpisodeViewController {
     
     @objc func didSelectCancel() {
         self.presentingViewController?.dismiss(animated: true, completion:nil)
+    }
+}
+
+extension AddNewEpisodeViewController: UIImagePickerControllerDelegate {
+    @objc func imagePickerController(_ picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [AnyHashable: Any]) {
+        chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func checkPermission() {
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        switch photoAuthorizationStatus {
+        case .authorized:
+            print("Access is granted by user")
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({
+                (newStatus) in
+                print("status is \(newStatus)")
+                if newStatus ==  PHAuthorizationStatus.authorized {
+                    /* do stuff here */
+                    print("success")
+                }
+            })
+            print("It is not determined until now")
+        case .restricted:
+            // same same
+            print("User do not have access to photo album.")
+        case .denied:
+            // same same
+            print("User has denied the permission.")
+        }
     }
 }
     

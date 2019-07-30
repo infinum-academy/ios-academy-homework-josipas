@@ -21,12 +21,18 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ne8-nZ-lr4">
                                 <rect key="frame" x="20" y="94" width="374" height="396"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-camera" translatesAutoresizingMaskIntoConstraints="NO" id="7Pl-oD-WDI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nH8-rg-mpx">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="H12-nV-0NW"/>
+                                            <constraint firstAttribute="height" constant="50" id="9zv-D8-0OT"/>
                                         </constraints>
-                                    </imageView>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" image="ic-camera"/>
+                                        <connections>
+                                            <action selector="addPhoto" destination="geF-qK-bYG" eventType="touchUpInside" id="UJi-qr-dQB"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krs-RT-rcO">
                                         <rect key="frame" x="0.0" y="70" width="374" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -124,6 +130,7 @@
                         <viewLayoutGuide key="safeArea" id="CG8-nA-zw8"/>
                     </view>
                     <connections>
+                        <outlet property="addPhotoButton" destination="nH8-rg-mpx" id="SMF-Py-YcP"/>
                         <outlet property="descriptionField" destination="bJp-1d-Mkt" id="KqH-eb-7uT"/>
                         <outlet property="episodeNumberField" destination="QGS-n4-Cck" id="QaP-rv-2Vp"/>
                         <outlet property="episodeTitleField" destination="nOs-5l-T0v" id="s40-Ul-CAz"/>
