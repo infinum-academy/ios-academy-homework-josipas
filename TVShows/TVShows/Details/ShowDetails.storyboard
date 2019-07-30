@@ -25,30 +25,30 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rD3-Hx-kK1">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="350"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rD3-Hx-kK1">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="470"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hxS-Am-0Q9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hxS-Am-0Q9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="300"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="SxM-XO-lWq"/>
+                                                        <constraint firstAttribute="height" constant="300" id="SxM-XO-lWq"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M18-KX-FNf">
-                                                    <rect key="frame" x="0.0" y="100" width="374" height="36"/>
+                                                    <rect key="frame" x="0.0" y="310" width="374" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K2D-NL-IF2">
-                                                    <rect key="frame" x="0.0" y="136" width="374" height="164"/>
+                                                    <rect key="frame" x="0.0" y="356" width="374" height="54"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lk-Ur-ROJ">
-                                                    <rect key="frame" x="0.0" y="300" width="374" height="50"/>
+                                                    <rect key="frame" x="0.0" y="420" width="374" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8T-s4-ug8">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
@@ -58,7 +58,7 @@
                                                             <attributedString key="attributedText">
                                                                 <fragment content="Episodes">
                                                                     <attributes>
-                                                                        <font key="NSFont" metaFont="system" size="22"/>
+                                                                        <font key="NSFont" size="22" name=".SFNSDisplay"/>
                                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                     </attributes>
                                                                 </fragment>
@@ -88,12 +88,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="M18-KX-FNf" firstAttribute="top" secondItem="hxS-Am-0Q9" secondAttribute="bottom" id="3jt-JE-L9Y"/>
                                                 <constraint firstItem="hxS-Am-0Q9" firstAttribute="top" secondItem="rD3-Hx-kK1" secondAttribute="top" id="4bz-iw-WZd"/>
-                                                <constraint firstAttribute="height" constant="350" id="Qve-H5-pyk"/>
+                                                <constraint firstAttribute="height" constant="470" id="Qve-H5-pyk"/>
                                                 <constraint firstItem="5lk-Ur-ROJ" firstAttribute="top" secondItem="K2D-NL-IF2" secondAttribute="bottom" id="RD0-Ep-3jp"/>
                                                 <constraint firstItem="hxS-Am-0Q9" firstAttribute="leading" secondItem="rD3-Hx-kK1" secondAttribute="leading" id="Tnw-uz-ugx"/>
-                                                <constraint firstItem="K2D-NL-IF2" firstAttribute="top" secondItem="M18-KX-FNf" secondAttribute="bottom" id="XeG-49-kwD"/>
                                                 <constraint firstItem="K2D-NL-IF2" firstAttribute="top" secondItem="M18-KX-FNf" secondAttribute="bottom" id="b8S-hf-Wad"/>
                                                 <constraint firstAttribute="bottom" secondItem="5lk-Ur-ROJ" secondAttribute="bottom" id="c0I-G4-yZ7"/>
                                                 <constraint firstItem="M18-KX-FNf" firstAttribute="top" secondItem="hxS-Am-0Q9" secondAttribute="bottom" id="dwn-WJ-mXa"/>

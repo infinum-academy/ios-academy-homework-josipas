@@ -123,6 +123,8 @@ private extension ShowDetailsViewController {
                         print("Succes: \(details)")
                         self?.showTitle.text = details.title
                         self?.showDescription.text = details.description
+                        let url = URL(string: "https://api.infinum.academy\(details.imageUrl)")
+                        self?.image.kf.setImage(with: url)
                     case .failure(let error):
                         print("API failure: \(error)")
                     }
