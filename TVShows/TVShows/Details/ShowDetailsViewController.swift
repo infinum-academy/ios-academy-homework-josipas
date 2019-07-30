@@ -11,49 +11,13 @@ import Alamofire
 import CodableAlamofire
 import SVProgressHUD
 
-struct ShowDetails : Codable{
-    let type: String
-    let title: String
-    let description: String
-    let id: String
-    let likesCount: Int
-    let imageUrl: String
-    
-    enum CodingKeys: String, CodingKey {
-        case type
-        case title
-        case description
-        case id = "_id"
-        case likesCount
-        case imageUrl
-    }
-}
-
-struct ShowEpisode: Codable{
-    let id: String
-    let title: String
-    let description: String
-    let imageUrl : String
-    let episodeNumber: String
-    let season: String
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case title
-        case description
-        case imageUrl
-        case episodeNumber
-        case season
-    }
-}
-
 final class ShowDetailsViewController: UIViewController {
 
-    @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var showTitle: UILabel!
-    @IBOutlet weak var showDescription: UITextView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var numberOfEpisodes: UILabel!
+    @IBOutlet private weak var image: UIImageView!
+    @IBOutlet private weak var showTitle: UILabel!
+    @IBOutlet private weak var showDescription: UITextView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var numberOfEpisodes: UILabel!
     
     var idOfChosenShow = ""
     private var TvShow : ShowDetails?
@@ -66,7 +30,7 @@ final class ShowDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidLayoutSubviews() {
@@ -101,60 +65,60 @@ private extension ShowDetailsViewController {
             addNewEpisode.delegate = self
         }
         let naavigationController = UINavigationController(rootViewController: addNewEpisodeViewController)
-        self.navigationController?.present(naavigationController, animated: true)
+        navigationController?.present(naavigationController, animated: true)
     }
     
     func getShowDetails() {
-        if let login = Storage.shared.loginUser {
-            print(login.token)
-            SVProgressHUD.show()
-            let headers = ["Authorization": login.token]
-            Alamofire
-                .request(
-                    "https://api.infinum.academy/api/shows/" + idOfChosenShow,
-                    method: .get,
-                    encoding: JSONEncoding.default,
-                    headers: headers)
-                .validate()
-                .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<ShowDetails>) in
-                    SVProgressHUD.dismiss()
-                    switch response.result {
-                    case .success(let details):
-                        print("Succes: \(details)")
-                        self?.showTitle.text = details.title
-                        self?.showDescription.text = details.description
-                        let url = URL(string: "https://api.infinum.academy\(details.imageUrl)")
-                        self?.image.kf.setImage(with: url)
-                    case .failure(let error):
-                        print("API failure: \(error)")
-                    }
-            }
+        guard let login = Storage.shared.loginUser else { return }
+        print(login.token)
+        SVProgressHUD.show()
+        let headers = ["Authorization": login.token]
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/shows/" + idOfChosenShow,
+                method: .get,
+                encoding: JSONEncoding.default,
+                headers: headers)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<ShowDetails>) in
+                SVProgressHUD.dismiss()
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let details):
+                    print("Succes: \(details)")
+                    self.showTitle.text = details.title
+                    self.showDescription.text = details.description
+                    let url = URL(string: "https://api.infinum.academy\(details.imageUrl)")
+                    self.image.kf.setImage(with: url)
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
         }
     }
     
     func getEpisodes() {
-        if let login = Storage.shared.loginUser {
-            SVProgressHUD.show()
-            let headers = ["Authorization": login.token]
-            Alamofire
-                .request(
-                    "https://api.infinum.academy/api/shows/" + idOfChosenShow + "/episodes",
-                    method: .get,
-                    encoding: JSONEncoding.default,
-                    headers: headers)
-                .validate()
-                .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<[ShowEpisode]>) in
-                    SVProgressHUD.dismiss()
-                    switch response.result {
-                    case .success(let episodes):
-                        print("Succes: \(episodes)")
-                        self?.episodes = episodes
-                        self?.numberOfEpisodes.text = String(episodes.count)
-                        self?.tableView.reloadData()
-                    case .failure(let error):
-                        print("API failure: \(error)")
-                    }
-            }
+        guard let login = Storage.shared.loginUser else { return }
+        SVProgressHUD.show()
+        let headers = ["Authorization": login.token]
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/shows/\(idOfChosenShow)/episodes",
+                method: .get,
+                encoding: JSONEncoding.default,
+                headers: headers)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<[ShowEpisode]>) in
+                SVProgressHUD.dismiss()
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let episodes):
+                    print("Succes: \(episodes)")
+                    self.episodes = episodes
+                    self.numberOfEpisodes.text = String(episodes.count)
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
         }
     }
 }

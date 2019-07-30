@@ -22,7 +22,7 @@ class AddNewEpisodeViewController: UIViewController {
     @IBOutlet weak var episodeNumberField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
     
-    var showId = ""
+    var showId : String?
     weak var delegate: AddNewEpisodeDelegate?
    
     override func viewDidLoad() {
@@ -34,63 +34,62 @@ class AddNewEpisodeViewController: UIViewController {
 
 private extension AddNewEpisodeViewController {
     func setUpUI() {
-            let navigationBar = navigationController?.navigationBar
-            navigationBar?.barTintColor = .white
-            navigationBar?.isTranslucent = false
-            navigationBar?.setBackgroundImage(UIImage(), for: .default)
-            navigationBar?.shadowImage = UIImage()
-            navigationBar?.tintColor = UIColor(red:1.00, green:0.46, blue:0.55, alpha:1.0)
+        let navigationBar = navigationController?.navigationBar
+        navigationBar?.barTintColor = .white
+        navigationBar?.isTranslucent = false
+        navigationBar?.setBackgroundImage(UIImage(), for: .default)
+        navigationBar?.shadowImage = UIImage()
+        navigationBar?.tintColor = UIColor(red:1.00, green:0.46, blue:0.55, alpha:1.0)
         
-            navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: "Add",
-                style: .plain,
-                target: self,
-                action: #selector(didSelectAdd)
-            )
-            navigationItem.leftBarButtonItem = UIBarButtonItem(
-                title: "Cancel",
-                style: .plain,
-                target: self,
-                action: #selector(didSelectCancel)
-            )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Add",
+            style: .plain,
+            target: self,
+            action: #selector(didSelectAdd)
+        )
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "Cancel",
+            style: .plain,
+            target: self,
+            action: #selector(didSelectCancel)
+        )
     }
     
     @objc func didSelectAdd() {
-        if let login = Storage.shared.loginUser {
-            SVProgressHUD.show()
-            let headers = ["Authorization": login.token]
-            let parameters: [String: String] = [
-                "showId": showId,
-                "mediaId": "",
-                "title": episodeTitleField.text!,
-                "description" : descriptionField.text!,
-                "episodeNumber" : episodeNumberField.text!,
-                "season" : seasonField.text!
-            ]
-            Alamofire
-                .request(
-                    "https://api.infinum.academy/api/episodes",
-                    method: .post,
-                    parameters: parameters,
-                    encoding: JSONEncoding.default,
-                    headers: headers)
-                .validate()
-                .responseData { [weak self] response in
-                        SVProgressHUD.dismiss()
-                        guard let self = self else { return }
-                        switch response.result {
-                        case .success(let episode):
-                            print("Succes: \(episode)")
-                            self.delegate?.reloadEpisodes()
-                            self.presentingViewController?.dismiss(animated: true, completion:nil)
-                        case .failure(let error):
-                            print("API failure: \(error)")
-                            DispatchQueue.main.async {
-                                let alert = UIAlertController(title: "Failure!", message: "Can't add this epizode!", preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                                self.present(alert, animated: true)
-                            }
-                }
+        guard let login = Storage.shared.loginUser, let showId = showId else { return }
+        SVProgressHUD.show()
+        let headers = ["Authorization": login.token]
+        let parameters: [String: String] = [
+            "showId": showId,
+            "mediaId": "",
+            "title": episodeTitleField.text!,
+            "description" : descriptionField.text!,
+            "episodeNumber" : episodeNumberField.text!,
+            "season" : seasonField.text!
+        ]
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/episodes",
+                method: .post,
+                parameters: parameters,
+                encoding: JSONEncoding.default,
+                headers: headers)
+            .validate()
+            .responseData { [weak self] response in
+                SVProgressHUD.dismiss()
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let episode):
+                    print("Succes: \(episode)")
+                    self.delegate?.reloadEpisodes()
+                    self.presentingViewController?.dismiss(animated: true, completion:nil)
+                case .failure(let error):
+                    print("API failure: \(error)")
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Failure!", message: "Can't add this epizode!", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
             }
         }
     }

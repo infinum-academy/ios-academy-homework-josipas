@@ -15,6 +15,8 @@
 		425ADB2422D29AF90057AEC7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425ADB2322D29AF90057AEC7 /* Login.storyboard */; };
 		4266F2BB22DDC94B00B5909F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4266F2BA22DDC94B00B5909F /* User.swift */; };
 		428127A022EF17BE00D0AB86 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4281279F22EF17BE00D0AB86 /* Keys.swift */; };
+		429D4B6422F05F1A00B0F6FC /* ShowDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D4B6322F05F1A00B0F6FC /* ShowDetails.swift */; };
+		429D4B6822F05F9A00B0F6FC /* ShowEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429D4B6722F05F9A00B0F6FC /* ShowEpisode.swift */; };
 		42A16D7522DC6BA500EBE739 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A16D7422DC6BA500EBE739 /* HomeViewController.swift */; };
 		42A16D7722DC6BBD00EBE739 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42A16D7622DC6BBD00EBE739 /* Home.storyboard */; };
 		42BFB61322CE53B600D06871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BFB61222CE53B600D06871 /* AppDelegate.swift */; };
@@ -35,6 +37,8 @@
 		425ADB2322D29AF90057AEC7 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4266F2BA22DDC94B00B5909F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4281279F22EF17BE00D0AB86 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		429D4B6322F05F1A00B0F6FC /* ShowDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetails.swift; sourceTree = "<group>"; };
+		429D4B6722F05F9A00B0F6FC /* ShowEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEpisode.swift; sourceTree = "<group>"; };
 		42A16D7422DC6BA500EBE739 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		42A16D7622DC6BBD00EBE739 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		42BFB60F22CE53B600D06871 /* TVShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +80,8 @@
 				423D4D4B22E5BD52001DC75B /* ShowDetailsViewController.swift */,
 				423D4D4D22E5C2E6001DC75B /* ShowDetails.storyboard */,
 				42EA642E22E6FBA800DA09A3 /* EpisodeTableViewCell.swift */,
+				429D4B6322F05F1A00B0F6FC /* ShowDetails.swift */,
+				429D4B6722F05F9A00B0F6FC /* ShowEpisode.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -293,9 +299,11 @@
 				425ADB1A22D28A720057AEC7 /* LoginViewController.swift in Sources */,
 				42BFB61322CE53B600D06871 /* AppDelegate.swift in Sources */,
 				42CFBC9722E7366400721934 /* AddNewEpisodeViewController.swift in Sources */,
+				429D4B6822F05F9A00B0F6FC /* ShowEpisode.swift in Sources */,
 				42A16D7522DC6BA500EBE739 /* HomeViewController.swift in Sources */,
 				423D4D4C22E5BD52001DC75B /* ShowDetailsViewController.swift in Sources */,
 				42078D3222E3789C00A6C897 /* TvShowsTableViewCell.swift in Sources */,
+				429D4B6422F05F1A00B0F6FC /* ShowDetails.swift in Sources */,
 				428127A022EF17BE00D0AB86 /* Keys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

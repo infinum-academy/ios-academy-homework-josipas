@@ -74,27 +74,30 @@ private extension HomeViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        if let login = Storage.shared.loginUser {
-            let headers = ["Authorization": login.token]
-            SVProgressHUD.show()
-            Alamofire
-                .request(
-                    "https://api.infinum.academy/api/shows",
-                    method: .get,
-                    encoding: JSONEncoding.default,
-                    headers: headers)
-                .validate()
-                .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<[TvShowItem]>) in
-                    SVProgressHUD.dismiss()
-                    switch response.result {
-                    case .success(let shows):
-                        print("Succes: \(shows)")
-                        self?.shows = shows
-                        self?.tableView.reloadData()
-                    case .failure(let error):
-                        print("API failure: \(error)")
-                    }
-            }
+        getTvShowItem()
+    }
+    
+    func getTvShowItem() {
+        guard let login = Storage.shared.loginUser else { return }
+        let headers = ["Authorization": login.token]
+        SVProgressHUD.show()
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/shows",
+                method: .get,
+                encoding: JSONEncoding.default,
+                headers: headers)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<[TvShowItem]>) in
+                SVProgressHUD.dismiss()
+                switch response.result {
+                case .success(let shows):
+                    print("Succes: \(shows)")
+                    self?.shows = shows
+                    self?.tableView.reloadData()
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
         }
     }
     
