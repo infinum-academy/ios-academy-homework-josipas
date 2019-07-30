@@ -25,6 +25,12 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if defaults.bool(forKey: "isCheckBoxSelected") {
+            guard let username = defaults.object(forKey: Keys.username) as? String, let password = defaults.object(forKey: Keys.password) as? String
+            else { return }
+        self._loginUserWith(email: username, password: password)
+        }
+
         let navigationBar = navigationController?.navigationBar
         navigationBar?.barTintColor = .white
         navigationBar?.isTranslucent = false
@@ -49,24 +55,12 @@ final class LoginViewController: UIViewController {
     @IBAction private func loginButtonPressed() {
         guard let username = usernameTextField.text, let password = passwordTextField.text else {
             return }
-        if isCheckBoxSelected {
-            saveDataToUserDefaults(username: username, password: password)
-        }
-        if defaults.bool(forKey: "isCheckBoxSelected") {
-            guard let username = defaults.object(forKey: Keys.username) as? String, let password = defaults.object(forKey: Keys.password) as? String
-            else { return }
-            _loginUserWith(email: username, password: password)
-        } else {
-        _loginUserWith(email: username, password: password)
-        }
+       _loginUserWith(email: username, password: password)
     }
     
     @IBAction private func createButtonPressed() {
         guard let username = usernameTextField.text, let password = passwordTextField.text else { return }
         if !(username.isEmpty) && !(password.isEmpty) {
-            if isCheckBoxSelected {
-                saveDataToUserDefaults(username: username, password: password)
-            }
             _registerUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
         } else {
             let alert = UIAlertController(title: "Incomplete form", message: "Please fill out all fields.", preferredStyle: .alert)
@@ -109,6 +103,9 @@ final class LoginViewController: UIViewController {
                 switch response.result {
                 case .success(let user):
                     print("Success: \(user)")
+                    if (self?.isCheckBoxSelected)! {
+                        self?.saveDataToUserDefaults(username: email, password: password)
+                    }
                     self?.registerUser = User(email: user.email, type: user.type, id: user.id)
                     self?.navigateToHome()
                 case .failure(let error):
@@ -138,6 +135,9 @@ final class LoginViewController: UIViewController {
                 switch response.result {
                 case .success(let login):
                     print("Success: \(login)")
+                    if (self?.isCheckBoxSelected)! {
+                        self?.saveDataToUserDefaults(username: email, password: password)
+                    }
                     Storage.shared.loginUser = LoginData(token: login.token)
                     self?.navigateToHome()
                 case .failure(let error):
@@ -173,8 +173,5 @@ final class LoginViewController: UIViewController {
         pulseAnimation.repeatCount = 2
         self.passwordTextField.layer.add(pulseAnimation, forKey: "animateOpacity")
         self.usernameTextField.layer.add(pulseAnimation, forKey: "animateOpacity")
-//        let alert = UIAlertController(title: "Login failed", message: "Incorrect username or password. Please try again.", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//        self.present(alert, animated: true)
     }
 }
