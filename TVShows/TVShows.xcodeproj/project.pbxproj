@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42078D3222E3789C00A6C897 /* TvShowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42078D3122E3789C00A6C897 /* TvShowsTableViewCell.swift */; };
 		42134C9D22E4C92D0016A131 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42134C9C22E4C92D0016A131 /* Storage.swift */; };
+		421FF32822F1A4D300DE3659 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421FF32722F1A4D300DE3659 /* Media.swift */; };
 		423D4D4C22E5BD52001DC75B /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D4D4B22E5BD52001DC75B /* ShowDetailsViewController.swift */; };
 		423D4D4E22E5C2E6001DC75B /* ShowDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 423D4D4D22E5C2E6001DC75B /* ShowDetails.storyboard */; };
 		425ADB1A22D28A720057AEC7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425ADB1922D28A720057AEC7 /* LoginViewController.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		42078D3122E3789C00A6C897 /* TvShowsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowsTableViewCell.swift; sourceTree = "<group>"; };
 		42134C9C22E4C92D0016A131 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		421FF32722F1A4D300DE3659 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		423D4D4B22E5BD52001DC75B /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
 		423D4D4D22E5C2E6001DC75B /* ShowDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowDetails.storyboard; sourceTree = "<group>"; };
 		425ADB1922D28A720057AEC7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				42CFBC9622E7366400721934 /* AddNewEpisodeViewController.swift */,
 				42CFBC9822E7368400721934 /* AddNewEpisode.storyboard */,
+				421FF32722F1A4D300DE3659 /* Media.swift */,
 			);
 			path = "New Episode";
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				42A16D7522DC6BA500EBE739 /* HomeViewController.swift in Sources */,
 				423D4D4C22E5BD52001DC75B /* ShowDetailsViewController.swift in Sources */,
 				42078D3222E3789C00A6C897 /* TvShowsTableViewCell.swift in Sources */,
+				421FF32822F1A4D300DE3659 /* Media.swift in Sources */,
 				429D4B6422F05F1A00B0F6FC /* ShowDetails.swift in Sources */,
 				428127A022EF17BE00D0AB86 /* Keys.swift in Sources */,
 			);

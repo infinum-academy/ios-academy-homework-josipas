@@ -18,24 +18,26 @@ protocol AddNewEpisodeDelegate: class {
 
 final class AddNewEpisodeViewController: UIViewController, UINavigationControllerDelegate {
     
-    @IBOutlet weak var addPhotoButton: UIButton!
-    @IBOutlet weak var episodeTitleField: UITextField!
-    @IBOutlet weak var seasonField: UITextField!
-    @IBOutlet weak var episodeNumberField: UITextField!
-    @IBOutlet weak var descriptionField: UITextField!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var addPhotoButton: UIButton!
+    @IBOutlet private weak var episodeTitleField: UITextField!
+    @IBOutlet private weak var seasonField: UITextField!
+    @IBOutlet private weak var episodeNumberField: UITextField!
+    @IBOutlet private weak var descriptionField: UITextField!
     
     var showId : String?
     weak var delegate: AddNewEpisodeDelegate?
     var imagePicker : UIImagePickerController?
     var chosenImage : UIImage?
+    var imageId = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkPermission()
-        //imagePicker.delegate = self
+        imageView.isHidden = true
         title = "Add episode"
         setUpUI()
     }
+    
     @IBAction func addPhoto() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
             imagePicker = UIImagePickerController()
@@ -73,12 +75,98 @@ private extension AddNewEpisodeViewController {
     }
     
     @objc func didSelectAdd() {
+        if chosenImage != nil {
+            uploadImageOnAPI()
+        }
+        addNewEpisode()
+    }
+    
+    @objc func didSelectCancel() {
+        self.presentingViewController?.dismiss(animated: true, completion:nil)
+    }
+}
+
+extension AddNewEpisodeViewController: UIImagePickerControllerDelegate {
+    @objc func imagePickerController(_ picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [AnyHashable: Any]) {
+        chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        imageView.isHidden = false
+        imageView.image = UIImage(cgImage: (chosenImage?.cgImage)!)
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+//    func checkPermission() {
+//        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+//        switch photoAuthorizationStatus {
+//        case .authorized:
+//            print("Access is granted by user")
+//        case .notDetermined:
+//            PHPhotoLibrary.requestAuthorization({
+//                (newStatus) in
+//                print("status is \(newStatus)")
+//                if newStatus ==  PHAuthorizationStatus.authorized {
+//                    /* do stuff here */
+//                    print("success")
+//                }
+//            })
+//            print("It is not determined until now")
+//        case .restricted:
+//            // same same
+//            print("User do not have access to photo album.")
+//        case .denied:
+//            // same same
+//            print("User has denied the permission.")
+//        }
+//    }
+
+    func uploadImageOnAPI() {
+        guard let login = Storage.shared.loginUser else { return }
+        let headers = ["Authorization": login.token]
+        let imageByteData = chosenImage?.pngData()
+        Alamofire
+            .upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imageByteData!,
+                                         withName: "file",
+                                         fileName: "image.png",
+                                         mimeType: "image/png")
+            }, to: "https://api.infinum.academy/api/media",
+               method: .post,
+               headers: headers)
+            { [weak self] result in
+                switch result {
+                case .success(let uploadRequest, _, _):
+                    self?.processUploadRequest(uploadRequest)
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+            }
+    }
+    
+    func processUploadRequest(_ uploadRequest: UploadRequest) {
+        uploadRequest
+            .responseDecodableObject(keyPath: "data") { (response:
+                DataResponse<Media>) in
+            switch response.result {
+            case .success(let media):
+                print("DECODED: \(media)")
+                self.imageId = media.id
+                print("Proceed to add episode call...")
+                self.addNewEpisode()
+            case .failure(let error): 
+                print("FAILURE: \(error)")
+            }
+        }
+    }
+    
+    func addNewEpisode() {
         guard let login = Storage.shared.loginUser, let showId = showId else { return }
-        SVProgressHUD.show()
         let headers = ["Authorization": login.token]
         let parameters: [String: String] = [
             "showId": showId,
-            "mediaId": "",
+            "mediaId": imageId,
             "title": episodeTitleField.text!,
             "description" : descriptionField.text!,
             "episodeNumber" : episodeNumberField.text!,
@@ -107,50 +195,11 @@ private extension AddNewEpisodeViewController {
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true)
                     }
-            }
-        }
-    }
-    
-    @objc func didSelectCancel() {
-        self.presentingViewController?.dismiss(animated: true, completion:nil)
-    }
-}
-
-extension AddNewEpisodeViewController: UIImagePickerControllerDelegate {
-    @objc func imagePickerController(_ picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [AnyHashable: Any]) {
-        chosenImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        self.dismiss(animated: true, completion: nil)
-    }
-
-    func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func checkPermission() {
-        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-        switch photoAuthorizationStatus {
-        case .authorized:
-            print("Access is granted by user")
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization({
-                (newStatus) in
-                print("status is \(newStatus)")
-                if newStatus ==  PHAuthorizationStatus.authorized {
-                    /* do stuff here */
-                    print("success")
                 }
-            })
-            print("It is not determined until now")
-        case .restricted:
-            // same same
-            print("User do not have access to photo album.")
-        case .denied:
-            // same same
-            print("User has denied the permission.")
         }
     }
+    
 }
     
-
 
 
