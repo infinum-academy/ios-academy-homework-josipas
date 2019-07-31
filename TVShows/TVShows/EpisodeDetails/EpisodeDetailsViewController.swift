@@ -15,11 +15,9 @@ import Kingfisher
 final class EpisodeDetailsViewController: UIViewController {
     
     @IBOutlet private weak var imageView: UIImageView!
-    
     @IBOutlet private weak var episodeTitle: UILabel!
-    
     @IBOutlet private weak var episodeSeason: UILabel!
-    
+    @IBOutlet private weak var emptyView: UIView!
     @IBOutlet private weak var episodeDescription: UITextView!
     
     var episodeId = ""
@@ -66,11 +64,16 @@ private extension EpisodeDetailsViewController {
                     self.episodeTitle.text = episode.title
                     self.episodeSeason.text = "S\(episode.season) E\(episode.episodeNumber)"
                     self.episodeDescription.text = episode.description
-                    let url = episode.imageURL
-                    self.imageView.kf.setImage(with: url)
+                    if !(episode.imageUrl.isEmpty)  {
+                        self.emptyView.isHidden = true
+                        let url = episode.imageURL
+                        self.imageView.kf.setImage(with: url)
+                    } else { self.imageView.isHidden = true }
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
         }
     }
 }
+
+

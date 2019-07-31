@@ -97,30 +97,6 @@ extension AddNewEpisodeViewController: UIImagePickerControllerDelegate {
     func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-//    func checkPermission() {
-//        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-//        switch photoAuthorizationStatus {
-//        case .authorized:
-//            print("Access is granted by user")
-//        case .notDetermined:
-//            PHPhotoLibrary.requestAuthorization({
-//                (newStatus) in
-//                print("status is \(newStatus)")
-//                if newStatus ==  PHAuthorizationStatus.authorized {
-//                    /* do stuff here */
-//                    print("success")
-//                }
-//            })
-//            print("It is not determined until now")
-//        case .restricted:
-//            // same same
-//            print("User do not have access to photo album.")
-//        case .denied:
-//            // same same
-//            print("User has denied the permission.")
-//        }
-//    }
 
     func uploadImageOnAPI() {
         guard let login = Storage.shared.loginUser else { return }
@@ -153,7 +129,6 @@ extension AddNewEpisodeViewController: UIImagePickerControllerDelegate {
             case .success(let media):
                 print("DECODED: \(media)")
                 self.imageId = media.id
-                print("Proceed to add episode call...")
                 self.addNewEpisode()
             case .failure(let error): 
                 print("FAILURE: \(error)")
@@ -162,15 +137,30 @@ extension AddNewEpisodeViewController: UIImagePickerControllerDelegate {
     }
     
     func addNewEpisode() {
-        guard let login = Storage.shared.loginUser, let showId = showId else { return }
+        guard
+            let login = Storage.shared.loginUser,
+            let showId = showId,
+            let episodeTitle = episodeTitleField.text,
+            let description = descriptionField.text,
+            let episodeNumber = episodeNumberField.text,
+            let season = seasonField.text
+            else { return }
+        
+        if episodeTitle.isEmpty || episodeNumber.isEmpty || season.isEmpty {
+            let alert = UIAlertController(title: "Incomplete form", message: "Please fill out all fields.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true)
+            return
+        }
+        
         let headers = ["Authorization": login.token]
         let parameters: [String: String] = [
             "showId": showId,
             "mediaId": imageId,
-            "title": episodeTitleField.text!,
-            "description" : descriptionField.text!,
-            "episodeNumber" : episodeNumberField.text!,
-            "season" : seasonField.text!
+            "title": episodeTitle,
+            "description" : description,
+            "episodeNumber" : episodeNumber,
+            "season" : season
         ]
         Alamofire
             .request(

@@ -95,6 +95,7 @@ private extension ShowDetailsViewController {
                     self.showDescription.text = details.description
                     let url = URL(string: "https://api.infinum.academy\(details.imageUrl)")
                     self.image.kf.setImage(with: url)
+                    self.image.sizeToImage()
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
@@ -192,5 +193,17 @@ extension UITableView {
         footerView.bounds.size.height = footerSize.height
         footerView.layoutIfNeeded()
         tableFooterView = footerView
+    }
+}
+
+extension UIImageView {
+    func sizeToImage() {
+        let xC = self.center.x
+        let yC = self.center.y
+        
+        self.frame = CGRect(x: 0, y: 0, width: (self.image?.size.width)!/2, height: (self.image?.size.height)!/2)
+        
+        self.center = CGPoint(x: xC, y: yC)
+        return
     }
 }
