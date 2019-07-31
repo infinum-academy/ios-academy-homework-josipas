@@ -140,6 +140,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ou-KB-jAr">
                                                             <rect key="frame" x="310" y="0.0" width="64" height="67"/>
                                                             <state key="normal" image="ic-navigation-chevron-right-medium"/>
+                                                            <connections>
+                                                                <action selector="episodeDetailsTapped" destination="Pcf-cN-OB9" eventType="touchUpInside" id="arA-Lj-cFa"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>

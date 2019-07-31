@@ -46,6 +46,10 @@ final class ShowDetailsViewController: UIViewController {
         navigateToAddNewEpisode()
     }
     
+    
+    @IBAction func episodeDetailsTapped() {
+        navigateToEpisodeDetails()
+    }
 }
 
 private extension ShowDetailsViewController {
@@ -121,6 +125,15 @@ private extension ShowDetailsViewController {
                 }
         }
     }
+    
+    func navigateToEpisodeDetails() {
+        let episodeDetailsStoryboard = UIStoryboard(name: "EpisodeDetails", bundle: nil)
+        let episodeDetailsViewController = episodeDetailsStoryboard.instantiateViewController(withIdentifier: "EpisodeDetailsViewController")
+        if let episodeDetails = episodeDetailsViewController as? EpisodeDetailsViewController {
+        self.navigationController?.pushViewController(episodeDetails, animated: true)
+        }
+    }
+    
 }
 
 extension ShowDetailsViewController: UITableViewDelegate {
@@ -175,5 +188,4 @@ extension UITableView {
         footerView.layoutIfNeeded()
         tableFooterView = footerView
     }
-    
 }
