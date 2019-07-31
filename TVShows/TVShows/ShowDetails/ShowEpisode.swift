@@ -25,3 +25,10 @@ struct ShowEpisode: Codable{
         case season
     }
 }
+
+extension ShowEpisode {
+    
+    var imageURL: URL {
+        return URL(string: "https://api.infinum.academy" + imageUrl)!
+    }
+}

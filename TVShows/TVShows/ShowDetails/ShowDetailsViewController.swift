@@ -22,6 +22,8 @@ final class ShowDetailsViewController: UIViewController {
     var idOfChosenShow = ""
     private var TvShow : ShowDetails?
     private var episodes : [ShowEpisode] = []
+    var episodeId = ""
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +76,6 @@ private extension ShowDetailsViewController {
     
     func getShowDetails() {
         guard let login = Storage.shared.loginUser else { return }
-        print(login.token)
         SVProgressHUD.show()
         let headers = ["Authorization": login.token]
         Alamofire
@@ -130,6 +131,7 @@ private extension ShowDetailsViewController {
         let episodeDetailsStoryboard = UIStoryboard(name: "EpisodeDetails", bundle: nil)
         let episodeDetailsViewController = episodeDetailsStoryboard.instantiateViewController(withIdentifier: "EpisodeDetailsViewController")
         if let episodeDetails = episodeDetailsViewController as? EpisodeDetailsViewController {
+        episodeDetails.episodeId = episodeId
         self.navigationController?.pushViewController(episodeDetails, animated: true)
         }
     }
@@ -138,6 +140,9 @@ private extension ShowDetailsViewController {
 
 extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        episodeId = episodes[indexPath.row].id
+        navigateToEpisodeDetails()
     }
 }
 

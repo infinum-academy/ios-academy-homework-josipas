@@ -7,12 +7,26 @@
 //
 
 import UIKit
+import Alamofire
+import CodableAlamofire
+import SVProgressHUD
+import Kingfisher
 
-class EpisodeDetailsViewController: UIViewController {
+final class EpisodeDetailsViewController: UIViewController {
+    
+    @IBOutlet private weak var imageView: UIImageView!
+    
+    @IBOutlet private weak var episodeTitle: UILabel!
+    
+    @IBOutlet private weak var episodeSeason: UILabel!
+    
+    @IBOutlet private weak var episodeDescription: UITextView!
+    
+    var episodeId = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getEpisodeDetails()
         // Do any additional setup after loading the view.
     }
     
@@ -30,4 +44,33 @@ class EpisodeDetailsViewController: UIViewController {
     }
     */
 
+}
+private extension EpisodeDetailsViewController {
+    func getEpisodeDetails() {
+        guard let login = Storage.shared.loginUser else { return }
+        SVProgressHUD.show()
+        let headers = ["Authorization": login.token]
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/episodes/\(episodeId)",
+                method: .get,
+                encoding: JSONEncoding.default,
+                headers: headers)
+            .validate()
+            .responseDecodableObject(keyPath: "data", decoder: JSONDecoder()) { [weak self](response: DataResponse<ShowEpisode>) in
+                SVProgressHUD.dismiss()
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let episode):
+                    print("Succes: \(episode)")
+                    self.episodeTitle.text = episode.title
+                    self.episodeSeason.text = "S\(episode.season) E\(episode.episodeNumber)"
+                    self.episodeDescription.text = episode.description
+                    let url = episode.imageURL
+                    self.imageView.kf.setImage(with: url)
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
+        }
+    }
 }
