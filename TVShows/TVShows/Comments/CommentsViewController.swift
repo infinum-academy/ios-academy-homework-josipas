@@ -15,6 +15,7 @@ final class CommentsViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var newComment: UITextField!
+    @IBOutlet private weak var emptyView: UIView!
     
     var episodeId = ""
     private var comments : [Comment] = []
@@ -28,6 +29,7 @@ final class CommentsViewController: UIViewController {
 
         title = "Comments"
         setUpUI()
+        getComments()
     }
     
     
@@ -48,8 +50,6 @@ private extension CommentsViewController {
     func setUpUI() {
         tableView.delegate = self 
         tableView.dataSource = self
-        
-        getComments()
         
         let navigationBar = navigationController?.navigationBar
         navigationBar?.barTintColor = .white
@@ -99,7 +99,7 @@ private extension CommentsViewController {
                 case .success(let comments):
                     print("Succes: \(comments)")
                     self.comments = comments
-                    self.tableView.reloadData()
+                    self.chooseScreen()
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
@@ -127,6 +127,7 @@ private extension CommentsViewController {
                 switch response.result {
                 case .success(let comment):
                     print("Succes: \(comment)")
+                    self.newComment.text = nil
                     self.getComments()
                     self.tableView.reloadData()
                 case .failure(let error):
@@ -137,6 +138,15 @@ private extension CommentsViewController {
                         self.present(alert, animated: true)
                     }
                 }
+        }
+    }
+    
+    func chooseScreen() {
+        if comments.count == 0 {
+            emptyView.isHidden = false
+        } else {
+            emptyView.isHidden = true
+            tableView.reloadData()
         }
     }
 }
