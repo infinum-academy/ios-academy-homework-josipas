@@ -13,7 +13,8 @@ import CodableAlamofire
 
 final class CommentsViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var newComment: UITextField!
     
     var episodeId = ""
     private var comments : [Comment] = []
@@ -27,6 +28,19 @@ final class CommentsViewController: UIViewController {
 
         title = "Comments"
         setUpUI()
+    }
+    
+    
+    @IBAction func postButonTapped() {
+        guard let text = newComment.text else { return }
+        if text.isEmpty {
+            let alert = UIAlertController(title: "Your comment is empty!", message: "Please write something.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true)
+        }
+        else {
+            postComment(comment: text)
+        }
     }
 }
 
@@ -88,6 +102,40 @@ private extension CommentsViewController {
                     self.tableView.reloadData()
                 case .failure(let error):
                     print("API failure: \(error)")
+                }
+        }
+    }
+    
+    func postComment(comment: String) {
+        guard let login = Storage.shared.loginUser else { return }
+        let headers = ["Authorization": login.token]
+        let parameters: [String: String] = [
+            "text": comment,
+            "episodeId" : episodeId
+        ]
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/comments",
+                method: .post,
+                parameters: parameters,
+                encoding: JSONEncoding.default,
+                headers: headers)
+            .validate()
+            .responseData { [weak self] response in
+                SVProgressHUD.dismiss()
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let comment):
+                    print("Succes: \(comment)")
+                    self.getComments()
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print("API failure: \(error)")
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Failure!", message: "Can't add this comment!", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
                 }
         }
     }
