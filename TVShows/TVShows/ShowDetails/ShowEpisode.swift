@@ -27,7 +27,6 @@ struct ShowEpisode: Codable{
 }
 
 extension ShowEpisode {
-    
     var imageURL: URL {
         return URL(string: "https://api.infinum.academy" + imageUrl)!
     }

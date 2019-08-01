@@ -31,13 +31,7 @@ final class LoginViewController: UIViewController {
         self._loginUserWith(email: username, password: password)
         }
 
-        let navigationBar = navigationController?.navigationBar
-        navigationBar?.barTintColor = .white
-        navigationBar?.isTranslucent = false
-        navigationBar?.setBackgroundImage(UIImage(), for: .default)
-        navigationBar?.shadowImage = UIImage()
-        
-        loginButton.layer.cornerRadius = 10
+        setUpUI()
         
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
@@ -68,8 +62,10 @@ final class LoginViewController: UIViewController {
             present(alert, animated: true)
         }
     }
-    
-   @objc private func adjustForKeyboard(notification: Notification) {
+}
+
+private extension LoginViewController {
+    @objc func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
@@ -82,7 +78,7 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    private func _registerUserWith(email: String, password: String) {
+    func _registerUserWith(email: String, password: String) {
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
@@ -111,10 +107,10 @@ final class LoginViewController: UIViewController {
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
-            }
         }
+    }
     
-    private func _loginUserWith(email: String, password: String) {
+    func _loginUserWith(email: String, password: String) {
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
@@ -149,19 +145,19 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    private func navigateToHome() {
+    func navigateToHome() {
         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
         self.navigationController?.pushViewController(homeViewController, animated: true)
     }
     
-    private func saveDataToUserDefaults(username: String, password: String) {
+    func saveDataToUserDefaults(username: String, password: String) {
         defaults.set(username, forKey: Keys.username)
         defaults.set(password, forKey: Keys.password)
         defaults.set(true, forKey: Keys.isCheckBoxSelected)
     }
     
-    private func loginFailed() {
+    func loginFailed() {
         self.usernameTextField.text = ""
         self.passwordTextField.text = ""
         let pulseAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
@@ -173,5 +169,15 @@ final class LoginViewController: UIViewController {
         pulseAnimation.repeatCount = 2
         self.passwordTextField.layer.add(pulseAnimation, forKey: "animateOpacity")
         self.usernameTextField.layer.add(pulseAnimation, forKey: "animateOpacity")
+    }
+    
+    func setUpUI() {
+        let navigationBar = navigationController?.navigationBar
+        navigationBar?.barTintColor = .white
+        navigationBar?.isTranslucent = false
+        navigationBar?.setBackgroundImage(UIImage(), for: .default)
+        navigationBar?.shadowImage = UIImage()
+        
+        loginButton.layer.cornerRadius = 10
     }
 }

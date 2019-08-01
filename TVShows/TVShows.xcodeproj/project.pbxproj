@@ -32,6 +32,7 @@
 		42D5C7B422F2E7A50036123A /* Comments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42D5C7B322F2E7A50036123A /* Comments.storyboard */; };
 		42D5C7B622F2E7B40036123A /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D5C7B522F2E7B40036123A /* CommentsViewController.swift */; };
 		42EA642F22E6FBA800DA09A3 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA642E22E6FBA800DA09A3 /* EpisodeTableViewCell.swift */; };
+		42FFC7E222F3640500A8C308 /* TvShowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FFC7E122F3640500A8C308 /* TvShowItem.swift */; };
 		A2A4741876318FA2235DF83D /* Pods_TVShows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 471D47DD1ED32DF039ACB067 /* Pods_TVShows.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		42D5C7B322F2E7A50036123A /* Comments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comments.storyboard; sourceTree = "<group>"; };
 		42D5C7B522F2E7B40036123A /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		42EA642E22E6FBA800DA09A3 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
+		42FFC7E122F3640500A8C308 /* TvShowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowItem.swift; sourceTree = "<group>"; };
 		471D47DD1ED32DF039ACB067 /* Pods_TVShows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVShows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B418729453E24C530A04E14 /* Pods-TVShows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.debug.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.debug.xcconfig"; sourceTree = "<group>"; };
 		8083B2D7FAD95CD1F84F3669 /* Pods-TVShows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.release.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				42A16D7422DC6BA500EBE739 /* HomeViewController.swift */,
 				42A16D7622DC6BBD00EBE739 /* Home.storyboard */,
 				42078D3122E3789C00A6C897 /* TvShowsTableViewCell.swift */,
+				42FFC7E122F3640500A8C308 /* TvShowItem.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4266F2BB22DDC94B00B5909F /* User.swift in Sources */,
+				42FFC7E222F3640500A8C308 /* TvShowItem.swift in Sources */,
 				42EA642F22E6FBA800DA09A3 /* EpisodeTableViewCell.swift in Sources */,
 				42134C9D22E4C92D0016A131 /* Storage.swift in Sources */,
 				425ADB1A22D28A720057AEC7 /* LoginViewController.swift in Sources */,

@@ -11,23 +11,9 @@ import Alamofire
 import CodableAlamofire
 import SVProgressHUD
 
-struct TvShowItem : Codable{
-    let id: String
-    let title: String
-    let imageUrl: String
-    let likesCount: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case title
-        case imageUrl
-        case likesCount
-    }
-}
-
 final class HomeViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     private var shows : [TvShowItem] = []
     var showId = ""
@@ -136,7 +122,6 @@ private extension HomeViewController {
             login.defaults.removeObject(forKey: Keys.username)
             self.navigationController?.setViewControllers([loginViewController], animated: true)
         }
-        
     }
 }
 
