@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4203AF0D22F30E9D0063F52C /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4203AF0C22F30E9D0063F52C /* CommentsTableViewCell.swift */; };
+		4203AF0F22F310290063F52C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4203AF0E22F310290063F52C /* Comment.swift */; };
 		42078D3222E3789C00A6C897 /* TvShowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42078D3122E3789C00A6C897 /* TvShowsTableViewCell.swift */; };
 		4209AF5B22F1C0E6007E9A57 /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4209AF5A22F1C0E6007E9A57 /* EpisodeDetailsViewController.swift */; };
 		4209AF5D22F1C0FB007E9A57 /* EpisodeDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4209AF5C22F1C0FB007E9A57 /* EpisodeDetails.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4203AF0C22F30E9D0063F52C /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		4203AF0E22F310290063F52C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		42078D3122E3789C00A6C897 /* TvShowsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowsTableViewCell.swift; sourceTree = "<group>"; };
 		4209AF5A22F1C0E6007E9A57 /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
 		4209AF5C22F1C0FB007E9A57 /* EpisodeDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EpisodeDetails.storyboard; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 			children = (
 				42D5C7B322F2E7A50036123A /* Comments.storyboard */,
 				42D5C7B522F2E7B40036123A /* CommentsViewController.swift */,
+				4203AF0C22F30E9D0063F52C /* CommentsTableViewCell.swift */,
+				4203AF0E22F310290063F52C /* Comment.swift */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				42134C9D22E4C92D0016A131 /* Storage.swift in Sources */,
 				425ADB1A22D28A720057AEC7 /* LoginViewController.swift in Sources */,
 				42BFB61322CE53B600D06871 /* AppDelegate.swift in Sources */,
+				4203AF0F22F310290063F52C /* Comment.swift in Sources */,
 				42CFBC9722E7366400721934 /* AddNewEpisodeViewController.swift in Sources */,
 				429D4B6822F05F9A00B0F6FC /* ShowEpisode.swift in Sources */,
 				42A16D7522DC6BA500EBE739 /* HomeViewController.swift in Sources */,
@@ -341,6 +348,7 @@
 				4209AF5B22F1C0E6007E9A57 /* EpisodeDetailsViewController.swift in Sources */,
 				429D4B6422F05F1A00B0F6FC /* ShowDetails.swift in Sources */,
 				428127A022EF17BE00D0AB86 /* Keys.swift in Sources */,
+				4203AF0D22F30E9D0063F52C /* CommentsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

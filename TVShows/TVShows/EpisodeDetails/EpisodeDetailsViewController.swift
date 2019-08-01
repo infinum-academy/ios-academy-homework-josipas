@@ -83,7 +83,10 @@ private extension EpisodeDetailsViewController {
         let commentsStoryboard = UIStoryboard(name: "Comments", bundle: nil)
         let commentsViewController = commentsStoryboard.instantiateViewController(withIdentifier: "CommentsViewController")
         let naavigationController = UINavigationController(rootViewController: commentsViewController)
-        navigationController?.present(naavigationController, animated: true)
+        if let comments = commentsViewController as? CommentsViewController {
+            comments.episodeId = episodeId
+            navigationController?.present(naavigationController, animated: true)
+        }
     }
 }
 
