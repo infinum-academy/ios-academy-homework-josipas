@@ -35,7 +35,7 @@
                                         </constraints>
                                         <viewLayoutGuide key="safeArea" id="hpd-vW-yoZ"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQv-P6-siz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQv-P6-siz">
                                         <rect key="frame" x="0.0" y="330" width="374" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
@@ -67,13 +67,37 @@
                                     <action selector="backButtonTapped" destination="BQ8-Od-JvL" eventType="touchUpInside" id="4UT-f7-5k7"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a58-Hz-MZE">
+                                <rect key="frame" x="20" y="792" width="122" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYw-QZ-8iR">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" image="ic-message-circle"/>
+                                        <connections>
+                                            <action selector="commentButtonTapped" destination="BQ8-Od-JvL" eventType="touchUpInside" id="EBL-F2-cWc"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y25-uR-Cx7">
+                                        <rect key="frame" x="34" y="0.0" width="88" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GOX-8U-27p"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Z9y-Ag-a9Y" firstAttribute="top" secondItem="w0I-13-4c3" secondAttribute="top" id="1g0-uE-BYR"/>
                             <constraint firstItem="W7e-ls-2p9" firstAttribute="top" secondItem="w0I-13-4c3" secondAttribute="top" constant="20" id="2Ba-n7-9YR"/>
+                            <constraint firstItem="a58-Hz-MZE" firstAttribute="leading" secondItem="w0I-13-4c3" secondAttribute="leading" constant="20" id="G2b-Jr-Pg1"/>
                             <constraint firstItem="Z9y-Ag-a9Y" firstAttribute="leading" secondItem="w0I-13-4c3" secondAttribute="leading" constant="20" id="GhW-8p-b10"/>
                             <constraint firstItem="W7e-ls-2p9" firstAttribute="leading" secondItem="w0I-13-4c3" secondAttribute="leading" constant="20" id="Ugd-p5-1db"/>
+                            <constraint firstItem="w0I-13-4c3" firstAttribute="bottom" secondItem="a58-Hz-MZE" secondAttribute="bottom" constant="20" id="aUp-I0-skT"/>
                             <constraint firstItem="Z9y-Ag-a9Y" firstAttribute="trailing" secondItem="w0I-13-4c3" secondAttribute="trailing" constant="-20" id="fkN-Gw-vVv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w0I-13-4c3"/>
@@ -92,6 +116,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic-message-circle" width="24" height="24"/>
         <image name="ic-navigate-back" width="32" height="32"/>
     </resources>
 </document>

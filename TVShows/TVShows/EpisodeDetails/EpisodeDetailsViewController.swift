@@ -19,6 +19,7 @@ final class EpisodeDetailsViewController: UIViewController {
     @IBOutlet private weak var episodeSeason: UILabel!
     @IBOutlet private weak var emptyView: UIView!
     @IBOutlet private weak var episodeDescription: UITextView!
+
     
     var episodeId = ""
 
@@ -32,6 +33,9 @@ final class EpisodeDetailsViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func commentButtonTapped() {
+        navigateToComments()
+    }
     /*
     // MARK: - Navigation
 
@@ -73,6 +77,13 @@ private extension EpisodeDetailsViewController {
                     print("API failure: \(error)")
                 }
         }
+    }
+    
+    func navigateToComments() {
+        let commentsStoryboard = UIStoryboard(name: "Comments", bundle: nil)
+        let commentsViewController = commentsStoryboard.instantiateViewController(withIdentifier: "CommentsViewController")
+        let naavigationController = UINavigationController(rootViewController: commentsViewController)
+        navigationController?.present(naavigationController, animated: true)
     }
 }
 

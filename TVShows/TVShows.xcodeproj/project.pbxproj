@@ -27,6 +27,8 @@
 		42BFB61D22CE53B700D06871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BFB61B22CE53B700D06871 /* LaunchScreen.storyboard */; };
 		42CFBC9722E7366400721934 /* AddNewEpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CFBC9622E7366400721934 /* AddNewEpisodeViewController.swift */; };
 		42CFBC9922E7368400721934 /* AddNewEpisode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42CFBC9822E7368400721934 /* AddNewEpisode.storyboard */; };
+		42D5C7B422F2E7A50036123A /* Comments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42D5C7B322F2E7A50036123A /* Comments.storyboard */; };
+		42D5C7B622F2E7B40036123A /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D5C7B522F2E7B40036123A /* CommentsViewController.swift */; };
 		42EA642F22E6FBA800DA09A3 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA642E22E6FBA800DA09A3 /* EpisodeTableViewCell.swift */; };
 		A2A4741876318FA2235DF83D /* Pods_TVShows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 471D47DD1ED32DF039ACB067 /* Pods_TVShows.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +56,8 @@
 		42BFB61E22CE53B700D06871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CFBC9622E7366400721934 /* AddNewEpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewEpisodeViewController.swift; sourceTree = "<group>"; };
 		42CFBC9822E7368400721934 /* AddNewEpisode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewEpisode.storyboard; sourceTree = "<group>"; };
+		42D5C7B322F2E7A50036123A /* Comments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comments.storyboard; sourceTree = "<group>"; };
+		42D5C7B522F2E7B40036123A /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		42EA642E22E6FBA800DA09A3 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		471D47DD1ED32DF039ACB067 /* Pods_TVShows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVShows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B418729453E24C530A04E14 /* Pods-TVShows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.debug.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 		42BFB61122CE53B600D06871 /* TVShows */ = {
 			isa = PBXGroup;
 			children = (
+				42D5C7B222F2E78C0036123A /* Comments */,
 				4209AF5922F1C0CC007E9A57 /* EpisodeDetails */,
 				42CFBC9522E7362300721934 /* New Episode */,
 				423D4D4722E5BCF7001DC75B /* ShowDetails */,
@@ -173,6 +178,15 @@
 				421FF32722F1A4D300DE3659 /* Media.swift */,
 			);
 			path = "New Episode";
+			sourceTree = "<group>";
+		};
+		42D5C7B222F2E78C0036123A /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				42D5C7B322F2E7A50036123A /* Comments.storyboard */,
+				42D5C7B522F2E7B40036123A /* CommentsViewController.swift */,
+			);
+			path = Comments;
 			sourceTree = "<group>";
 		};
 		5DEA5753D4B289BECDBF70EF /* Frameworks */ = {
@@ -252,6 +266,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42D5C7B422F2E7A50036123A /* Comments.storyboard in Resources */,
 				42BFB61D22CE53B700D06871 /* LaunchScreen.storyboard in Resources */,
 				42CFBC9922E7368400721934 /* AddNewEpisode.storyboard in Resources */,
 				42BFB61A22CE53B700D06871 /* Assets.xcassets in Resources */,
@@ -319,6 +334,7 @@
 				42CFBC9722E7366400721934 /* AddNewEpisodeViewController.swift in Sources */,
 				429D4B6822F05F9A00B0F6FC /* ShowEpisode.swift in Sources */,
 				42A16D7522DC6BA500EBE739 /* HomeViewController.swift in Sources */,
+				42D5C7B622F2E7B40036123A /* CommentsViewController.swift in Sources */,
 				423D4D4C22E5BD52001DC75B /* ShowDetailsViewController.swift in Sources */,
 				42078D3222E3789C00A6C897 /* TvShowsTableViewCell.swift in Sources */,
 				421FF32822F1A4D300DE3659 /* Media.swift in Sources */,
