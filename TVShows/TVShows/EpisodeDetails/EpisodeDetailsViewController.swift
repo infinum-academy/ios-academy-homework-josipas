@@ -26,27 +26,17 @@ final class EpisodeDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getEpisodeDetails()
-        // Do any additional setup after loading the view.
     }
     
-    @IBAction func backButtonTapped() {
+    @IBAction private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func commentButtonTapped() {
+    @IBAction private func commentButtonTapped() {
         navigateToComments()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
 private extension EpisodeDetailsViewController {
     func getEpisodeDetails() {
         guard let login = Storage.shared.loginUser else { return }

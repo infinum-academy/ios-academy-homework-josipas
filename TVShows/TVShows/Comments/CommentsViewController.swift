@@ -33,7 +33,7 @@ final class CommentsViewController: UIViewController {
     }
     
     
-    @IBAction func postButonTapped() {
+    @IBAction private func postButonTapped() {
         guard let text = newComment.text else { return }
         if text.isEmpty {
             let alert = UIAlertController(title: "Your comment is empty!", message: "Please write something.", preferredStyle: .alert)

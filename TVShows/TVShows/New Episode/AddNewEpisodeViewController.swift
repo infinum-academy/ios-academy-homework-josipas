@@ -38,15 +38,15 @@ final class AddNewEpisodeViewController: UIViewController, UINavigationControlle
         setUpUI()
     }
     
-    @IBAction func addPhoto() {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
-            imagePicker = UIImagePickerController()
-            guard let imagePicker = imagePicker else { return }
-            imagePicker.delegate = self
-            imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-            imagePicker.allowsEditing = true
-            imagePicker.sourceType = .photoLibrary
-            present(imagePicker, animated: true, completion: nil)
+    @IBAction private func addPhoto() {
+       if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
+                imagePicker = UIImagePickerController()
+                guard let imagePicker = imagePicker else { return }
+                imagePicker.delegate = self
+                imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+                imagePicker.allowsEditing = true
+                imagePicker.sourceType = .photoLibrary
+                present(imagePicker, animated: true, completion: nil)
         }
     }
 }
@@ -188,7 +188,6 @@ extension AddNewEpisodeViewController: UIImagePickerControllerDelegate {
                 }
         }
     }
-    
 }
     
 

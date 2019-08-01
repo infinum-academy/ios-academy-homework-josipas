@@ -40,16 +40,16 @@ final class ShowDetailsViewController: UIViewController {
         tableView.fixTableHeaderViewHeight()
     }
     
-    @IBAction func backButtonTapped() {
+    @IBAction private func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func addButtonTapped() {
+    @IBAction private func addButtonTapped() {
         navigateToAddNewEpisode()
     }
     
     
-    @IBAction func episodeDetailsTapped() {
+    @IBAction private func episodeDetailsTapped() {
         navigateToEpisodeDetails()
     }
 }
