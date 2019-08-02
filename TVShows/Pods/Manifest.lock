@@ -2,24 +2,28 @@ PODS:
   - Alamofire (4.8.2)
   - CodableAlamofire (1.1.1):
     - Alamofire (~> 4.0)
+  - Kingfisher (5.7.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Alamofire
   - CodableAlamofire
+  - Kingfisher
   - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - CodableAlamofire
+    - Kingfisher
     - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   CodableAlamofire: b587c1198562824abb1f468aed34feb00d6cecd8
+  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 7378632dadcb010ce174a5299cd2d0fef18e1fda
+PODFILE CHECKSUM: d964c37b06aa2635db7ea60211fc2e43f238d021
 
 COCOAPODS: 1.7.3

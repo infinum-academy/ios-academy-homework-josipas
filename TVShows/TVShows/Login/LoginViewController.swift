@@ -12,49 +12,60 @@ import Alamofire
 import CodableAlamofire
 
 final class LoginViewController: UIViewController {
-    
-   
-    //MARK: - Outlets
    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    //MARK: - Properties
     
     private var registerUser: User?
-    private var loginUser: LoginData?
-    
-    //MARK: - Lifecycle methods
+    private var isCheckBoxSelected = false
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton.layer.cornerRadius = 10
+        if defaults.bool(forKey: "isCheckBoxSelected") {
+            guard let username = defaults.object(forKey: Keys.username) as? String, let password = defaults.object(forKey: Keys.password) as? String
+            else { return }
+        self._loginUserWith(email: username, password: password)
+        }
+
+        setUpUI()
         
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
-    
-    //MARK: - Actions
     @IBAction private func checkboxTouched(_ sender: UIButton) {
-       sender.isSelected.toggle()
+        sender.isSelected.toggle()
+        if sender.isSelected {
+            isCheckBoxSelected = true
+        } else {
+            isCheckBoxSelected = false
+        }
     }
 
     @IBAction private func loginButtonPressed() {
-        guard let username = usernameTextField.text, let password = passwordTextField.text else { return }
-        _loginUserWith(email: username, password: password)
+        guard let username = usernameTextField.text, let password = passwordTextField.text else {
+            return }
+       _loginUserWith(email: username, password: password)
     }
     
     @IBAction private func createButtonPressed() {
-        if !(usernameTextField.text!.isEmpty) && !(passwordTextField.text!.isEmpty) {
+        guard let username = usernameTextField.text, let password = passwordTextField.text else { return }
+        if !(username.isEmpty) && !(password.isEmpty) {
             _registerUserWith(email: usernameTextField.text!, password: passwordTextField.text!)
+        } else {
+            let alert = UIAlertController(title: "Incomplete form", message: "Please fill out all fields.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true)
         }
     }
-    
-    
-   @objc private func adjustForKeyboard(notification: Notification) {
+}
+
+private extension LoginViewController {
+    @objc func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
@@ -67,7 +78,7 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    private func _registerUserWith(email: String, password: String) {
+    func _registerUserWith(email: String, password: String) {
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
@@ -88,15 +99,18 @@ final class LoginViewController: UIViewController {
                 switch response.result {
                 case .success(let user):
                     print("Success: \(user)")
+                    if (self?.isCheckBoxSelected)! {
+                        self?.saveDataToUserDefaults(username: email, password: password)
+                    }
                     self?.registerUser = User(email: user.email, type: user.type, id: user.id)
                     self?.navigateToHome()
                 case .failure(let error):
                     print("API failure: \(error)")
                 }
-            }
         }
+    }
     
-    private func _loginUserWith(email: String, password: String) {
+    func _loginUserWith(email: String, password: String) {
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
@@ -117,18 +131,53 @@ final class LoginViewController: UIViewController {
                 switch response.result {
                 case .success(let login):
                     print("Success: \(login)")
-                    self?.loginUser = LoginData(token: login.token)
+                    if (self?.isCheckBoxSelected)! {
+                        self?.saveDataToUserDefaults(username: email, password: password)
+                    }
+                    Storage.shared.loginUser = LoginData(token: login.token)
                     self?.navigateToHome()
                 case .failure(let error):
                     print("API failure: \(error)")
+                    DispatchQueue.main.async {
+                        self?.loginFailed()
+                    }
                 }
         }
     }
     
-    private func navigateToHome() {
+    func navigateToHome() {
         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-        self.navigationController?.pushViewController(HomeViewController, animated: true)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
+        self.navigationController?.pushViewController(homeViewController, animated: true)
     }
-
+    
+    func saveDataToUserDefaults(username: String, password: String) {
+        defaults.set(username, forKey: Keys.username)
+        defaults.set(password, forKey: Keys.password)
+        defaults.set(true, forKey: Keys.isCheckBoxSelected)
+    }
+    
+    func loginFailed() {
+        self.usernameTextField.text = ""
+        self.passwordTextField.text = ""
+        let pulseAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        pulseAnimation.duration = 1
+        pulseAnimation.fromValue = 0
+        pulseAnimation.toValue = 1
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = 2
+        self.passwordTextField.layer.add(pulseAnimation, forKey: "animateOpacity")
+        self.usernameTextField.layer.add(pulseAnimation, forKey: "animateOpacity")
+    }
+    
+    func setUpUI() {
+        let navigationBar = navigationController?.navigationBar
+        navigationBar?.barTintColor = .white
+        navigationBar?.isTranslucent = false
+        navigationBar?.setBackgroundImage(UIImage(), for: .default)
+        navigationBar?.shadowImage = UIImage()
+        
+        loginButton.layer.cornerRadius = 10
+    }
 }
