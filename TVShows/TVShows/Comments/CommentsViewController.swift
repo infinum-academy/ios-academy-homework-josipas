@@ -142,12 +142,8 @@ private extension CommentsViewController {
     }
     
     func chooseScreen() {
-        if comments.count == 0 {
-            emptyView.isHidden = false
-        } else {
-            emptyView.isHidden = true
-            tableView.reloadData()
-        }
+        tableView.reloadData()
+        emptyView.isHidden = comments.count > 0
     }
 }
 

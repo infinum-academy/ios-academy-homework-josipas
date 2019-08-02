@@ -29,7 +29,7 @@ extension CommentsTableViewCell {
     func configure(with item: Comment) {
         username.text = item.userEmail
         commentLabel.text = item.text
-        userImage.image = UIImage(named: "img-placeholder-user\(Int.random(in: 1...3)).pdf")
+        userImage.image = UIImage(named: "img-placeholder-user\(Int.random(in: 1...3))")
     }
 }
 
